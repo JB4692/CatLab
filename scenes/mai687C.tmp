@@ -26,7 +26,7 @@ sources/0 = SubResource("TileSetAtlasSource_sq400")
 script = ExtResource("1_1gcq1")
 
 [node name="Player" parent="." instance=ExtResource("1_731j5")]
-position = Vector2(-557, 105)
+position = Vector2(-565, 135)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var platforms: TileMap = $Platforms
+
 func _ready() -> void:
 	var file_to_read: String = "saves/save1.txt"
 	if read_from_file(file_to_read) >= 0:
@@ -13,16 +15,14 @@ func read_from_file(path: String) -> int:
 		return -1
 
 	var file: FileAccess = FileAccess.open(path, FileAccess.READ)
-	var num_lines: int = int(file.get_line())
 	var game_objects: Array = []
-	print("Number of lines to read: " + str(num_lines))
-	for i in range(0, num_lines):
-		if file.eof_reached():
-			print("Unexpected EOF reached! Closing file.")
-			file.close()
-			return -1
+	
+	while !file.eof_reached():
 		var line = file.get_line()
+		if line == "":
+			break
 		game_objects.append(parse_line(line))
+	print(game_objects)
 	place_object(game_objects)
 	
 	file.close()
@@ -30,20 +30,38 @@ func read_from_file(path: String) -> int:
 
 func parse_line(line: String) -> Array:
 	var split_line = line.split(",")
-	# make more logic to be able to connect the objects to words in the game_save
 	return split_line
 
 # obj_array is a 2D array of game objects of form:
 # object_name,x,y 
+#void set_cell(layer: int, 
+#			   coords: Vector2i, 
+#			   source_id: int = -1, 
+#			   atlas_coords: Vector2i = Vector2i(-1, -1), 
+#			   alternative_tile: int = 0)
 func place_object(obj_array: Array) -> void:
-	print(obj_array)
-	for i in range(0, len(obj_array)):
+	for i in range(len(obj_array)):
+		var x_coord = int(obj_array[i][1])
+		var y_coord = int(obj_array[i][2])
+		
 		match obj_array[i][0]:
-			"josh":
-				print("Found josh")
-			"jane":
-				print("found jane")
-			"kamron":
-				print("found kamron")
-			"patricia":
-				print("found patricia")
+			"grass":
+				place_grass(x_coord, y_coord)
+			"brick":
+				place_brick(x_coord, y_coord)
+			"player":
+				var player = get_node("Player")
+				if player:
+					player.position = Vector2(0, 0)
+				else:
+					print("player doesn't exist yet")
+			_:
+				print("Could not match game object.")
+
+func place_grass(x: int, y: int):
+	var grass_atlas_coord = Vector2i(0,1)
+	platforms.set_cell(0, Vector2i(x, y), 0, grass_atlas_coord, 0)
+
+func place_brick(x: int, y: int):
+	var brick_atlas_coord = Vector2i(2,0)
+	platforms.set_cell(0, Vector2i(x, y), 0, brick_atlas_coord, 0)
