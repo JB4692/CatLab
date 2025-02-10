@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var platforms: TileMap = $Platforms
+@onready var player: CharacterBody2D = $Player
 
 func _ready() -> void:
 	var file_to_read: String = "saves/save1.txt"
@@ -32,13 +33,6 @@ func parse_line(line: String) -> Array:
 	var split_line = line.split(",")
 	return split_line
 
-# obj_array is a 2D array of game objects of form:
-# object_name,x,y 
-#void set_cell(layer: int, 
-#			   coords: Vector2i, 
-#			   source_id: int = -1, 
-#			   atlas_coords: Vector2i = Vector2i(-1, -1), 
-#			   alternative_tile: int = 0)
 func place_object(obj_array: Array) -> void:
 	for i in range(len(obj_array)):
 		var x_coord = int(obj_array[i][1])
@@ -50,14 +44,11 @@ func place_object(obj_array: Array) -> void:
 			"brick":
 				place_brick(x_coord, y_coord)
 			"player":
-				var player = get_node("Player")
-				if player:
-					player.position = Vector2(0, 0)
-				else:
-					print("player doesn't exist yet")
+				place_player(x_coord, y_coord)
 			_:
 				print("Could not match game object.")
 
+#tile are placed via TILE GRID positions
 func place_grass(x: int, y: int):
 	var grass_atlas_coord = Vector2i(0,1)
 	platforms.set_cell(0, Vector2i(x, y), 0, grass_atlas_coord, 0)
@@ -65,3 +56,7 @@ func place_grass(x: int, y: int):
 func place_brick(x: int, y: int):
 	var brick_atlas_coord = Vector2i(2,0)
 	platforms.set_cell(0, Vector2i(x, y), 0, brick_atlas_coord, 0)
+
+#player is placed via PIXEL positions
+func place_player(x: int, y: int):
+	player.position = Vector2(x, y)

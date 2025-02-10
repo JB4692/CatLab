@@ -26,14 +26,14 @@ sources/0 = SubResource("TileSetAtlasSource_sq400")
 script = ExtResource("1_1gcq1")
 
 [node name="Player" parent="." instance=ExtResource("1_731j5")]
-position = Vector2(-557, 105)
+position = Vector2(100, 100)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Platforms" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_x2u73")
 format = 2
-layer_0/tile_data = PackedInt32Array(393204, 0, 1, 393205, 0, 1, 393206, 0, 1, 393207, 0, 1, 393208, 0, 1, 327674, 0, 1, 327675, 0, 1, 327676, 0, 1, 327677, 0, 1, 327678, 0, 1, 131073, 0, 1, 131074, 0, 1, 131075, 0, 1, 131072, 0, 1)
+layer_0/tile_data = PackedInt32Array(-589842, 131072, 0, -655343, 131072, 0, 589841, 131072, 0, 655342, 131072, 0)
 metadata/_edit_group_ = true
 
 [node name="Area2D" parent="." instance=ExtResource("3_k8wpv")]

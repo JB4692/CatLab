@@ -1,3 +1,4 @@
+player,-560,150
 grass,-18,7
 grass,-17,7
 grass,-16,7
