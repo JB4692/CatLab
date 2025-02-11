@@ -1,10 +1,11 @@
 extends Node2D
 
+@onready var main_game: Node2D = $"."
 @onready var platforms: TileMap = $Platforms
 @onready var player: CharacterBody2D = $Player
 
 func _ready() -> void:
-	var file_to_read: String = "saves/save1.txt"
+	var file_to_read: String = "saves/save1.cfg"
 	if read_from_file(file_to_read) >= 0:
 		print("Successfully loaded the game file!")
 	else:
@@ -46,9 +47,11 @@ func place_object(obj_array: Array) -> void:
 			"player":
 				place_player(x_coord, y_coord)
 			"litter_box":
-				print("lb")
+				place_litter_box(x_coord, y_coord)
 			"moving_platform":
-				print("mp")
+				var end_x = int(obj_array[i][3])
+				var end_y = int(obj_array[i][4]) 
+				place_moving_platform(x_coord, y_coord, end_x, end_y)
 			_:
 				print("Could not match game object.")
 
@@ -65,13 +68,18 @@ func place_brick(x: int, y: int):
 func place_player(x: int, y: int):
 	player.position = Vector2(x, y)
 	
-func place_moving_platform(x: int, y: int):
-	# will need to have it place and move either right or left always a fixed 
-	# distance? Maybe we can make it customizable distance at some point?
-	pass
+func place_moving_platform(start_x: int, start_y: int, end_x: int, end_y: int):
+	var linear_moving_platform_scene = load("res://scenes/linear_moving_platform.tscn")
+	var platform_object = linear_moving_platform_scene.instantiate()
+	platform_object.position = Vector2i(start_x, start_y)
+	main_game.add_child(platform_object)
 
+#coin in place for the litter box right now. 
 func place_litter_box(x: int, y: int):
-	pass
+	var eol_scene = load("res://scenes/level_endpoint.tscn")
+	var eol_object = eol_scene.instantiate()
+	eol_object.position = Vector2i(x, y)
+	main_game.add_child(eol_object)
 
 func place_coin(x: int, y: int):
 	pass
