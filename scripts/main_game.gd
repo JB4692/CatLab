@@ -72,6 +72,8 @@ func place_moving_platform(start_x: int, start_y: int, end_x: int, end_y: int):
 	var linear_moving_platform_scene = load("res://scenes/linear_moving_platform.tscn")
 	var platform_object = linear_moving_platform_scene.instantiate()
 	platform_object.position = Vector2i(start_x, start_y)
+	
+	
 	main_game.add_child(platform_object)
 
 #coin in place for the litter box right now. 
