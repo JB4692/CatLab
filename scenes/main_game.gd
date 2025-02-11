@@ -45,6 +45,10 @@ func place_object(obj_array: Array) -> void:
 				place_brick(x_coord, y_coord)
 			"player":
 				place_player(x_coord, y_coord)
+			"litter_box":
+				print("lb")
+			"moving_platform":
+				print("mp")
 			_:
 				print("Could not match game object.")
 
@@ -60,3 +64,14 @@ func place_brick(x: int, y: int):
 #player is placed via PIXEL positions
 func place_player(x: int, y: int):
 	player.position = Vector2(x, y)
+	
+func place_moving_platform(x: int, y: int):
+	# will need to have it place and move either right or left always a fixed 
+	# distance? Maybe we can make it customizable distance at some point?
+	pass
+
+func place_litter_box(x: int, y: int):
+	pass
+
+func place_coin(x: int, y: int):
+	pass
