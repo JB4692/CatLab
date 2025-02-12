@@ -1,6 +1,6 @@
 player,-560,150
 litter_box,560,204
-moving_platform,100,50,100
+horizontal_moving_platform,0,100,5,100
 grass,-19,7
 grass,-18,7
 grass,-17,7

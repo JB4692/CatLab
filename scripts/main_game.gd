@@ -49,9 +49,8 @@ func place_object(obj_array: Array) -> void:
 			"litter_box":
 				place_litter_box(x_coord, y_coord)
 			"moving_platform":
-				var end_x = int(obj_array[i][3])
-				var end_y = int(obj_array[i][4]) 
-				place_moving_platform(x_coord, y_coord, end_x, end_y)
+				var distance = int(obj_array[i][3])
+				place_moving_platform(x_coord, y_coord, distance)
 			_:
 				print("Could not match game object.")
 
@@ -68,13 +67,14 @@ func place_brick(x: int, y: int):
 func place_player(x: int, y: int):
 	player.position = Vector2(x, y)
 	
-func place_moving_platform(start_x: int, start_y: int, end_x: int, end_y: int):
-	var linear_moving_platform_scene = load("res://scenes/linear_moving_platform.tscn")
+func place_moving_platform(start_x: int, start_y: int, distance: int):
+	var linear_moving_platform_scene = load("res://scenes/moving_platform.tscn")
 	var platform_object = linear_moving_platform_scene.instantiate()
 	platform_object.position = Vector2i(start_x, start_y)
 	
-	
 	main_game.add_child(platform_object)
+	var child = main_game.get_node("moving_platform")
+	child.distance_x = distance
 
 #coin in place for the litter box right now. 
 func place_litter_box(x: int, y: int):
