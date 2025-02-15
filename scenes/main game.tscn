@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cu2wdn0httpg2"]
+[gd_scene load_steps=8 format=3 uid="uid://cu2wdn0httpg2"]
 
 [ext_resource type="PackedScene" uid="uid://bk3qlfir1vuvf" path="res://scenes/player.tscn" id="1_731j5"]
 [ext_resource type="Texture2D" uid="uid://fpf5d13u0i5y" path="res://assets/tilesets/Dirt Grass and brick tileset.png" id="2_qenma"]
 [ext_resource type="PackedScene" uid="uid://cxiwyn6x0t1o7" path="res://scenes/level_endpoint.tscn" id="3_k8wpv"]
 [ext_resource type="PackedScene" uid="uid://r1b83rtqvqia" path="res://scenes/enemy1.tscn" id="4_0cw7a"]
+[ext_resource type="PackedScene" uid="uid://2tfqgv8xq70s" path="res://scenes/climbable_wall.tscn" id="5_q48u1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sq400"]
 texture = ExtResource("2_qenma")
@@ -22,6 +23,12 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_sq400")
 
 [node name="Main Game" type="Node2D"]
+
+[node name="TileMap" parent="." instance=ExtResource("5_q48u1")]
+position = Vector2(-416, 191)
+
+[node name="TileMap2" parent="." instance=ExtResource("5_q48u1")]
+position = Vector2(-33, 98)
 
 [node name="Player" parent="." instance=ExtResource("1_731j5")]
 position = Vector2(-549, 208)

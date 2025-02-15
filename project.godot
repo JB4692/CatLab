@@ -69,3 +69,4 @@ jump={
 [layer_names]
 
 2d_physics/layer_2="enemy"
+2d_physics/layer_3="climbable wall"
