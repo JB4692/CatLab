@@ -1,9 +1,14 @@
 extends CharacterBody2D
 
+# TODO: improve on controls
+# - stop jumping from looking weird 
+# - face the direction he's moving in
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+var SPEED = 300.0
+var JUMP_VELOCITY = -350.0
+var start_position = Vector2(-550, 209.9991)
 
+var dead = false
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -23,3 +28,15 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+
+
+func revive(): 
+	# put player back in start_position
+	if dead: 
+		position = start_position
+
+func _on_player_hitbox_body_entered(body: Node2D) -> void:
+	if body.name == "Enemy1":
+		dead = true
+		revive()

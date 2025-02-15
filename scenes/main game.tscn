@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cu2wdn0httpg2"]
+[gd_scene load_steps=7 format=3 uid="uid://cu2wdn0httpg2"]
 
 [ext_resource type="PackedScene" uid="uid://bk3qlfir1vuvf" path="res://scenes/player.tscn" id="1_731j5"]
 [ext_resource type="Texture2D" uid="uid://fpf5d13u0i5y" path="res://assets/tilesets/Dirt Grass and brick tileset.png" id="2_qenma"]
 [ext_resource type="PackedScene" uid="uid://cxiwyn6x0t1o7" path="res://scenes/level_endpoint.tscn" id="3_k8wpv"]
+[ext_resource type="PackedScene" uid="uid://r1b83rtqvqia" path="res://scenes/enemy1.tscn" id="4_0cw7a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sq400"]
 texture = ExtResource("2_qenma")
@@ -35,3 +36,6 @@ metadata/_edit_group_ = true
 
 [node name="Area2D" parent="." instance=ExtResource("3_k8wpv")]
 position = Vector2(558, 206)
+
+[node name="Enemy1" parent="." instance=ExtResource("4_0cw7a")]
+position = Vector2(139, 207)
