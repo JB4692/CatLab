@@ -77,6 +77,7 @@ func place_moving_platform(start_x: int, start_y: int, distance: int):
 	child.distance_x = distance
 
 #coin in place for the litter box right now. 
+#eol = end of level
 func place_litter_box(x: int, y: int):
 	var eol_scene = load("res://scenes/level_endpoint.tscn")
 	var eol_object = eol_scene.instantiate()
