@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://2tfqgv8xq70s"]
+
+[ext_resource type="Texture2D" uid="uid://fpf5d13u0i5y" path="res://assets/tilesets/Dirt Grass and brick tileset.png" id="1_rvhcv"]
+[ext_resource type="Script" path="res://scripts/climbable_wall.gd" id="2_bl2od"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s37pm"]
+texture = ExtResource("1_rvhcv")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_27y7f"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_s37pm")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ougak"]
+size = Vector2(32, 63)
+
+[node name="TileMap" type="TileMap"]
+tile_set = SubResource("TileSet_27y7f")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 131072, 0, -65536, 131072, 0)
+script = ExtResource("2_bl2od")
+
+[node name="Climbable Wall Detection" type="Area2D" parent="."]
+collision_layer = 5
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Climbable Wall Detection"]
+position = Vector2(16, 0.5)
+shape = SubResource("RectangleShape2D_ougak")
+
+[connection signal="body_entered" from="Climbable Wall Detection" to="." method="_on_climbable_wall_detection_body_entered"]
+[connection signal="body_exited" from="Climbable Wall Detection" to="." method="_on_climbable_wall_detection_body_exited"]
