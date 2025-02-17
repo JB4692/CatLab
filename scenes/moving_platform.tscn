@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6xf1u7c2wvcy"]
+
+[ext_resource type="Texture2D" uid="uid://dyrllecegk76c" path="res://assets/sprites/SpecialBlock.png" id="1_mb5yt"]
+
+[sub_resource type="GDScript" id="GDScript_dtsr3"]
+script/source = "extends Node2D
+
+@export var speed: float = 50.0
+@export var distance_x: float
+@export var distance_y: float = 0
+
+var direction: int = 1
+var start_position: Vector2
+var target_position: Vector2
+
+func _ready():
+	start_position = position
+	target_position = start_position + Vector2(distance_x, distance_y)
+	move_platform()
+
+func move_platform():
+	var tween = create_tween()
+	target_position = start_position + Vector2(distance_x * direction, distance_y * direction)
+	tween.tween_property(self, \"position\", target_position, distance_x / speed).set_trans(Tween.TRANS_SINE)
+	print(\"X: \" + str(position.x) + \"Y: \" + str(position.y)) 
+	tween.finished.connect(on_tween_complete)
+
+func on_tween_complete():
+	target_position = start_position if position.x > start_position.x else start_position + Vector2(100, 0)
+	direction *= -1
+	move_platform()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uax1f"]
+size = Vector2(32, 32)
+
+[node name="moving_platform" type="AnimatableBody2D"]
+script = SubResource("GDScript_dtsr3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_mb5yt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_uax1f")
+one_way_collision = true
