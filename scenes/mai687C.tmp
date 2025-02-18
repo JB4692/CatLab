@@ -1,11 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cu2wdn0httpg2"]
+[gd_scene load_steps=7 format=3 uid="uid://cu2wdn0httpg2"]
 
-[ext_resource type="Script" path="res://scripts/main_game.gd" id="1_1gcq1"]
+[ext_resource type="Script" path="res://scenes/main_game.gd" id="1_1gcq1"]
 [ext_resource type="PackedScene" uid="uid://bk3qlfir1vuvf" path="res://scenes/player.tscn" id="1_731j5"]
 [ext_resource type="Texture2D" uid="uid://fpf5d13u0i5y" path="res://assets/tilesets/Dirt Grass and brick tileset.png" id="2_qenma"]
 [ext_resource type="PackedScene" uid="uid://cxiwyn6x0t1o7" path="res://scenes/level_endpoint.tscn" id="3_k8wpv"]
-[ext_resource type="PackedScene" uid="uid://r1b83rtqvqia" path="res://scenes/enemy1.tscn" id="4_0cw7a"]
-[ext_resource type="PackedScene" uid="uid://2tfqgv8xq70s" path="res://scenes/climbable_wall.tscn" id="5_q48u1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sq400"]
 texture = ExtResource("2_qenma")
@@ -27,24 +25,16 @@ sources/0 = SubResource("TileSetAtlasSource_sq400")
 [node name="Main Game" type="Node2D"]
 script = ExtResource("1_1gcq1")
 
-[node name="TileMap" parent="." instance=ExtResource("5_q48u1")]
-position = Vector2(-416, 191)
-
-[node name="TileMap2" parent="." instance=ExtResource("5_q48u1")]
-position = Vector2(-33, 98)
-
 [node name="Player" parent="." instance=ExtResource("1_731j5")]
-position = Vector2(-2001, 0)
+position = Vector2(-565, 135)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Platforms" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_x2u73")
 format = 2
+layer_0/tile_data = PackedInt32Array(393204, 0, 1, 393205, 0, 1, 393206, 0, 1, 393207, 0, 1, 393208, 0, 1, 327674, 0, 1, 327675, 0, 1, 327676, 0, 1, 327677, 0, 1, 327678, 0, 1, 131073, 0, 1, 131074, 0, 1, 131075, 0, 1, 131072, 0, 1)
 metadata/_edit_group_ = true
 
 [node name="Area2D" parent="." instance=ExtResource("3_k8wpv")]
 position = Vector2(558, 206)
-
-[node name="Enemy1" parent="." instance=ExtResource("4_0cw7a")]
-position = Vector2(139, 207)
