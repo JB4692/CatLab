@@ -22,7 +22,7 @@ func move_platform():
 	var tween = create_tween()
 	target_position = start_position + Vector2(distance_x * direction, distance_y * direction)
 	tween.tween_property(self, \"position\", target_position, distance_x / speed).set_trans(Tween.TRANS_SINE)
-	print(\"X: \" + str(position.x) + \"Y: \" + str(position.y)) 
+	#print(\"X: \" + str(position.x) + \"Y: \" + str(position.y)) 
 	tween.finished.connect(on_tween_complete)
 
 func on_tween_complete():

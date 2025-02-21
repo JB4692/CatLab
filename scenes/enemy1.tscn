@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://r1b83rtqvqia"]
 
 [ext_resource type="Script" path="res://scripts/enemy1_behavior.gd" id="1_s5lyc"]
-[ext_resource type="Texture2D" uid="uid://dyrllecegk76c" path="res://assets/sprites/SpecialBlock.png" id="1_wot70"]
+[ext_resource type="Texture2D" uid="uid://b30v7geewj4cv" path="res://assets/sprites/Yarn.png" id="2_onn2y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_frmo3"]
 size = Vector2(37, 32)
@@ -17,7 +17,7 @@ collision_layer = 2
 script = ExtResource("1_s5lyc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_wot70")
+texture = ExtResource("2_onn2y")
 
 [node name="Enemy CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0)
