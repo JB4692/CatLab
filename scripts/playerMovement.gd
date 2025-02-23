@@ -3,12 +3,15 @@ extends CharacterBody2D
 # TODO: improve on controls
 # - make jumping feel better  
 # - flip sprite based on movement direction
+signal healthChanged 
+signal playerRevived 
 
 var SPEED = 300.0
 var JUMP_VELOCITY = -350.0
 var start_position = Vector2(-550, 209.9991)
 var climbing = false
 var dead = false
+var health: int = 3;
 
 func set_climbing(climb: bool):
 	climbing = climb
@@ -23,13 +26,24 @@ func revive():
 	if dead: 
 		position = start_position
 		dead = false
+		health = 3; 
+		playerRevived.emit(health)
 
 func _on_player_hitbox_body_entered(body: Node2D) -> void:
-	if body.name == "Enemy1":
-		dead = true
-		revive()
-		
-		
+	#if body.name == "Enemy1":
+	if body.name.contains("Enemy"):
+		print("Hitbox entered by body. curr Health: ", health)
+		if health > 0:
+			health = health - 1
+			print("Emitting signal")
+			healthChanged.emit()
+		elif health == 0: 
+			set_dead(true)
+			revive()
+
+func set_dead(d: bool):
+	dead = d
+
 func _movement(delta):
 		# Add the gravity.
 	if not is_on_floor():
@@ -54,3 +68,15 @@ func _wall_climb(delta):
 
 	if direction: velocity = direction * SPEED/2
 	else: velocity = Vector2.ZERO
+
+
+func _on_player_hitbox_area_entered(area: Area2D) -> void:
+	#print(area.get_parent().name)
+	print("Area entered hitbox")
+	#if body.name == "Enemy1":
+		#print(health)
+		#if health > 0:
+			#health = health - 1
+		#elif health == 0: 
+			#set_dead(true)
+			#revive()
