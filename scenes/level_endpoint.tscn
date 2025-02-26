@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://b78ru1o7v1po7" path="res://assets/sprites/shitbox.png" id="2_nqnb8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_41pxs"]
-radius = 6.0
-height = 26.0
+radius = 14.0
+height = 28.0
 
 [node name="Level Endpoint" type="Area2D"]
 script = ExtResource("1_0wyla")

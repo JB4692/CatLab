@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdtdg0i7uc8gh"]
+[gd_scene load_steps=6 format=3 uid="uid://cdtdg0i7uc8gh"]
 
 [ext_resource type="Texture2D" uid="uid://fpf5d13u0i5y" path="res://assets/tilesets/Dirt Grass and brick tileset.png" id="1_76ssk"]
 [ext_resource type="Script" path="res://scripts/eol_button.gd" id="2_i0he1"]
+[ext_resource type="Script" path="res://scenes/label.gd" id="3_jniqf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u6s6i"]
 texture = ExtResource("1_76ssk")
@@ -28,5 +29,12 @@ offset_bottom = 572.0
 text = "Return to level"
 script = ExtResource("2_i0he1")
 metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 552.0
+offset_top = 243.0
+offset_right = 592.0
+offset_bottom = 266.0
+script = ExtResource("3_jniqf")
 
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
