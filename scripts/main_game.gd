@@ -54,12 +54,9 @@ func place_object(obj_array: Array) -> void:
 		match obj_array[i][0]:
 			"dirt":
 				place_dirt(x_coord, y_coord)
-			"grass1":
-				place_grass1(x_coord, y_coord)
-			"grass2":
-				place_grass2(x_coord, y_coord)
-			"grass3":
-				place_grass3(x_coord, y_coord)
+			"grass":
+				var length = int(obj_array[i][3])
+				place_grass(x_coord, y_coord, length)
 			"brick":
 				place_brick(x_coord, y_coord)
 			"player":
@@ -83,20 +80,10 @@ func place_dirt(x: int, y: int) -> void:
 	var dirt_atlas_coord = Vector2i(0, 0)
 	platforms.set_cell(0, Vector2i(x, y), 0, dirt_atlas_coord, 0)
 	
-func place_grass1(x: int, y: int) -> void:
+func place_grass(x: int, y: int, length: int) -> void:
 	var grass_atlas_coord = Vector2i(0,1)
-	platforms.set_cell(0, Vector2i(x, y), 0, grass_atlas_coord, 0)
-
-func place_grass2(x: int, y: int) -> void:
-	var grass_atlas_coord = Vector2i(0,1)
-	platforms.set_cell(0, Vector2i(x, y), 0, grass_atlas_coord, 0)
-	platforms.set_cell(0, Vector2i(x+1,y), 0, grass_atlas_coord,0)
-
-func place_grass3(x: int, y: int):
-	var grass_atlas_coord = Vector2i(0,1)
-	platforms.set_cell(0, Vector2i(x, y), 0, grass_atlas_coord, 0)
-	platforms.set_cell(0, Vector2i(x+1,y), 0, grass_atlas_coord,0)
-	platforms.set_cell(0, Vector2i(x+2,y), 0, grass_atlas_coord,0)
+	for i in range(0, length):
+		platforms.set_cell(0, Vector2i(x + i, y), 0, grass_atlas_coord, 0)
 
 func place_brick(x: int, y: int) -> void:
 	var brick_atlas_coord = Vector2i(2,0)
