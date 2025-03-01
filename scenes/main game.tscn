@@ -75,6 +75,8 @@ position = Vector2(-526, 265)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 visible = false
+position = Vector2(-514, 260)
+zoom = Vector2(5, 5)
 
 [node name="Revive trigger" type="Area2D" parent="."]
 position = Vector2(0, -8)

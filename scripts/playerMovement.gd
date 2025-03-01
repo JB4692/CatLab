@@ -6,12 +6,13 @@ extends CharacterBody2D
 signal healthChanged 
 signal playerRevived 
 
-var SPEED = 300.0
+var SPEED = 300.0 # 300
 var JUMP_VELOCITY = -350.0
 var start_position = Vector2(-550, 209.9991)
 var climbing = false
 var dead = false
 var health: int = 3;
+@onready var animated_sprite = $AnimatedSprite2D
 
 func set_climbing(climb: bool):
 	climbing = climb
@@ -53,9 +54,25 @@ func _movement(delta):
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions
+
+
 	var direction := Input.get_axis("ui_left", "ui_right")
+	# not moving = 0, to right = 1, to left = -1 
+	
+	# flip sprite according to direction
+	if direction > 0: # facing right 
+		animated_sprite.flip_h = false
+	elif direction < 0: 
+		animated_sprite.flip_h = true
+		
+	if is_on_floor():
+		if direction == 0: 
+			animated_sprite.play("idle")
+		else: 
+			animated_sprite.play("walk")
+	else:
+		animated_sprite.play("jump")
+	
 	if direction:
 		velocity.x = direction * SPEED
 	else:
