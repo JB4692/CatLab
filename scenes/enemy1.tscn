@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scripts/enemy1_behavior.gd" id="1_s5lyc"]
 [ext_resource type="Texture2D" uid="uid://b30v7geewj4cv" path="res://assets/sprites/Yarn.png" id="2_onn2y"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_frmo3"]
-size = Vector2(37, 32)
+[sub_resource type="CircleShape2D" id="CircleShape2D_i2jjg"]
+radius = 13.0096
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wp5di"]
 size = Vector2(306, 96)
@@ -20,8 +20,8 @@ script = ExtResource("1_s5lyc")
 texture = ExtResource("2_onn2y")
 
 [node name="Enemy CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0)
-shape = SubResource("RectangleShape2D_frmo3")
+position = Vector2(0, 1.5)
+shape = SubResource("CircleShape2D_i2jjg")
 
 [node name="Area Detection" type="Area2D" parent="."]
 collision_mask = 2
@@ -35,7 +35,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D on Top" type="CollisionShape2D" parent="Enemy1 Hitbox"]
-position = Vector2(0, -13)
+position = Vector2(0, -15)
 shape = SubResource("RectangleShape2D_lof4c")
 debug_color = Color(0.506742, 0.425012, 1, 0.42)
 
