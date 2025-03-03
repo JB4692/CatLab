@@ -6,7 +6,6 @@ extends Node2D
 @onready var timer: Timer = $Timer
 @onready var time_label: Label = $TimerLabel
 @onready var score_label: Label = $ScoreLabel
-@onready var coin: Area2D = $Coins/coin
 
 signal time_ran_out
 
@@ -22,11 +21,7 @@ var score = 0
 func _ready() -> void:
 	var file_to_read: String = "saves/save1.cfg"
 	load_from_file_on_start(file_to_read)
-	
-	coin.coin_collected.connect(_on_coin_collected)
-	
-	for c in get_tree().get_nodes_in_group("coins"):
-		c.coin_collected.connect(_on_coin_collected)
+
 
 func _process(delta: float) -> void:
 	time_label.text = "Time left: " + str(round_places(timer.time_left, 2))
