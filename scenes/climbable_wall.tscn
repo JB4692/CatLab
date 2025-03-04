@@ -35,14 +35,14 @@ size = Vector2(32, 63)
 [node name="Climbable Wall" type="TileMap"]
 tile_set = SubResource("TileSet_27y7f")
 format = 2
-layer_0/tile_data = PackedInt32Array(0, 131072, 0, -65536, 131072, 0)
+layer_0/tile_data = PackedInt32Array(-1, 131072, 0, -65537, 131072, 0)
 script = ExtResource("2_bl2od")
 
 [node name="Climbable Wall Detection" type="Area2D" parent="."]
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Climbable Wall Detection"]
-position = Vector2(16, 0.5)
+position = Vector2(-16, -31)
 shape = SubResource("RectangleShape2D_ougak")
 
 [connection signal="body_entered" from="Climbable Wall Detection" to="." method="_on_climbable_wall_detection_body_entered"]

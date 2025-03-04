@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://cu2wdn0httpg2"]
+
+[ext_resource type="Script" path="res://scenes/main_game.gd" id="1_1gcq1"]
+[ext_resource type="PackedScene" uid="uid://bk3qlfir1vuvf" path="res://scenes/player.tscn" id="1_731j5"]
+[ext_resource type="Texture2D" uid="uid://fpf5d13u0i5y" path="res://assets/tilesets/Dirt Grass and brick tileset.png" id="2_qenma"]
+[ext_resource type="PackedScene" uid="uid://cxiwyn6x0t1o7" path="res://scenes/level_endpoint.tscn" id="3_k8wpv"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sq400"]
+texture = ExtResource("2_qenma")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:1/0 = 0
+2:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_x2u73"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_sq400")
+
+[node name="Main Game" type="Node2D"]
+script = ExtResource("1_1gcq1")
+
+[node name="Player" parent="." instance=ExtResource("1_731j5")]
+position = Vector2(-565, 135)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Platforms" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_x2u73")
+format = 2
+layer_0/tile_data = PackedInt32Array(393204, 0, 1, 393205, 0, 1, 393206, 0, 1, 393207, 0, 1, 393208, 0, 1, 327674, 0, 1, 327675, 0, 1, 327676, 0, 1, 327677, 0, 1, 327678, 0, 1, 131073, 0, 1, 131074, 0, 1, 131075, 0, 1, 131072, 0, 1)
+metadata/_edit_group_ = true
+
+[node name="Area2D" parent="." instance=ExtResource("3_k8wpv")]
+position = Vector2(558, 206)
