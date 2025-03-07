@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cdtdg0i7uc8gh"]
 
 [ext_resource type="Texture2D" uid="uid://fpf5d13u0i5y" path="res://assets/tilesets/Dirt Grass and brick tileset.png" id="1_76ssk"]
-[ext_resource type="Script" path="res://scripts/eol_button.gd" id="2_i0he1"]
+[ext_resource type="Script" uid="uid://b3gvi3u2txg6c" path="res://scripts/eol_button.gd" id="2_i0he1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u6s6i"]
 texture = ExtResource("1_76ssk")
