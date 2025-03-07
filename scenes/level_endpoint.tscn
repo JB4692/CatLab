@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://cxiwyn6x0t1o7"]
 
 [ext_resource type="Script" path="res://scripts/switch_to_eol.gd" id="1_0wyla"]
-[ext_resource type="Texture2D" uid="uid://ckc10v0fvpa4d" path="res://assets/sprites/BFlower.png" id="2_pile3"]
+[ext_resource type="Texture2D" uid="uid://b78ru1o7v1po7" path="res://assets/sprites/shitbox.png" id="2_nqnb8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_41pxs"]
-radius = 6.0
-height = 26.0
+radius = 14.0
+height = 28.0
 
 [node name="Level Endpoint" type="Area2D"]
 script = ExtResource("1_0wyla")
@@ -14,7 +14,8 @@ script = ExtResource("1_0wyla")
 shape = SubResource("CapsuleShape2D_41pxs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_pile3")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_nqnb8")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

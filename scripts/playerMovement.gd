@@ -25,7 +25,7 @@ func revive():
 		dead = false
 
 func _on_player_hitbox_body_entered(body: Node2D) -> void:
-	if body.name == "Enemy1":
+	if body.name.contains("enemy"):
 		dead = true
 		revive()
 		
