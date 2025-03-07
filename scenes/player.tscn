@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bk3qlfir1vuvf"]
 
-[ext_resource type="Script" path="res://scripts/playerMovement.gd" id="1_avgps"]
+[ext_resource type="Script" uid="uid://2d47nl5f70oo" path="res://scripts/playerMovement.gd" id="1_avgps"]
 [ext_resource type="Texture2D" uid="uid://2cllhwa8twsk" path="res://assets/sprites/Cat.png" id="2_txpyc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q74d6"]
