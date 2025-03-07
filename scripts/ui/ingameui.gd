@@ -98,12 +98,14 @@ func _on_yes_button_button_down():
 		$UI/MenuContainer.visible = false
 		$UI/OpenTabButton.visible = false
 		$UI/Confirmation.visible = false
+		
+		# add photo functions, will probably need to thread load
 		$UI/MenuAnimator.play("pawtrail")
-		await get_tree().create_timer(6.4).timeout
 		$UI/MenuAnimator.stop()
 		$"UI/PawPrint Anim".visible = false
 		$UI/Notification.visible = false
-		get_tree().change_scene_to_file("res://scenes/main game.tscn")
+		get_tree().change_scene_to_file("res://scenes/main_game.tscn")
+
 
 func _on_no_button_button_down():
 	$UI/Confirmation/TitleText.visible = false
