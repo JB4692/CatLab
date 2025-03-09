@@ -7,6 +7,8 @@ extends Node2D
 @onready var time_label: Label = $TimerLabel
 @onready var score_label: Label = $ScoreLabel
 
+@onready var heartContainer = $"CanvasLayer/Heart Container"
+
 signal time_ran_out
 
 # num_object variables are for number of objects of that type on the screen
@@ -21,6 +23,10 @@ var score = 0
 func _ready() -> void:
 	var file_to_read: String = "saves/save1.cfg"
 	load_from_file_on_start(file_to_read)
+	heartContainer.setMaxHearts(player.health)	
+	player.healthChanged.connect(heartContainer.reduceHeart)
+	player.playerRevived.connect(heartContainer.setMaxHearts)
+
 
 
 func _process(delta: float) -> void:
@@ -35,6 +41,12 @@ func _on_countdown_timer_timeout() -> void:
 func _on_coin_collected():
 	score += 1
 	print("Coin collected!")
+
+func _on_revive_trigger_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	if body.name == "Player":
+		var player = body.get_node("/root/Main Game/Player")
+		player.set_dead(true)
+		player.revive()
 
 func load_from_file_on_start(path: String) -> void:
 	if read_from_file(path) >= 0:
@@ -104,6 +116,7 @@ func place_grass(x: int, y: int, length: int) -> void:
 	var grass_atlas_coord = Vector2i(0,1)
 	for i in range(0, length):
 		platforms.set_cell(0, Vector2i(x + i, y), 0, grass_atlas_coord, 0)
+
 
 func place_brick(x: int, y: int) -> void:
 	var brick_atlas_coord = Vector2i(2,0)

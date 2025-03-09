@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oc3rubbl2jrm"
-path="res://.godot/imported/test.jpg-7efcacddaf75267adb5ff056243b7832.ctex"
+uid="uid://cu830eonsvppc"
+path="res://.godot/imported/doctor_spritesheet.png-2b08e571877e05af84f4e6553180f2e2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://CatLabYOLO/Source/test.jpg"
-dest_files=["res://.godot/imported/test.jpg-7efcacddaf75267adb5ff056243b7832.ctex"]
+source_file="res://assets/sprites/doctor_spritesheet.png"
+dest_files=["res://.godot/imported/doctor_spritesheet.png-2b08e571877e05af84f4e6553180f2e2.ctex"]
 
 [params]
 
