@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://cu2wdn0httpg2"]
+[gd_scene load_steps=11 format=4 uid="uid://cu2wdn0httpg2"]
 
 [ext_resource type="Script" path="res://scripts/main_game.gd" id="1_j2p5a"]
 [ext_resource type="PackedScene" uid="uid://fskuxnds6xnw" path="res://scenes/heart_container.tscn" id="2_xm0e5"]
