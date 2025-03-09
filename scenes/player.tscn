@@ -1,5 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://bk3qlfir1vuvf"]
 
+
 [ext_resource type="Script" path="res://scripts/playerMovement.gd" id="1_avgps"]
 [ext_resource type="Texture2D" uid="uid://cu830eonsvppc" path="res://assets/sprites/doctor_spritesheet.png" id="2_j36sl"]
 
