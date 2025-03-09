@@ -7,7 +7,6 @@ extends Node2D
 @onready var time_label: Label = $TimerLabel
 @onready var score_label: Label = $ScoreLabel
 
-@onready var player = $Player
 @onready var heartContainer = $"CanvasLayer/Heart Container"
 
 signal time_ran_out
@@ -117,6 +116,7 @@ func place_grass(x: int, y: int, length: int) -> void:
 	var grass_atlas_coord = Vector2i(0,1)
 	for i in range(0, length):
 		platforms.set_cell(0, Vector2i(x + i, y), 0, grass_atlas_coord, 0)
+
 
 func place_brick(x: int, y: int) -> void:
 	var brick_atlas_coord = Vector2i(2,0)

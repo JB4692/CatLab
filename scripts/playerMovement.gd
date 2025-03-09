@@ -31,8 +31,8 @@ func revive():
 		playerRevived.emit(health)
 
 func _on_player_hitbox_body_entered(body: Node2D) -> void:
-	#if body.name == "Enemy1":
-	if body.name.contains("Enemy"):
+	print("Player hitbox entered by Body", body.name)
+	if body.name.contains("enemy"):
 		print("Hitbox entered by body. curr Health: ", health)
 		if health > 0:
 			health = health - 1
@@ -45,6 +45,12 @@ func _on_player_hitbox_body_entered(body: Node2D) -> void:
 func set_dead(d: bool):
 	dead = d
 
+func jump(jump_type):
+	if jump_type == "Bounce": # Only do a bit if bouncing off enemy
+		velocity.y = JUMP_VELOCITY + 150
+	else: 
+		velocity.y = JUMP_VELOCITY
+
 func _movement(delta):
 		# Add the gravity.
 	if not is_on_floor():
@@ -52,9 +58,8 @@ func _movement(delta):
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-
+		#velocity.y = JUMP_VELOCITY
+		jump("Input")
 
 	var direction := Input.get_axis("ui_left", "ui_right")
 	# not moving = 0, to right = 1, to left = -1 
@@ -85,6 +90,7 @@ func _wall_climb(delta):
 
 	if direction: velocity = direction * SPEED/2
 	else: velocity = Vector2.ZERO
+
 
 
 func _on_player_hitbox_area_entered(area: Area2D) -> void:
