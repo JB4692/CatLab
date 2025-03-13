@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oc3rubbl2jrm"
-path="res://.godot/imported/test.jpg-7efcacddaf75267adb5ff056243b7832.ctex"
+uid="uid://nfoklbhlwatk"
+path="res://.godot/imported/create button.png-6da0225eed5682aa041217012f1965cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://CatLabYOLO/Source/test.jpg"
-dest_files=["res://.godot/imported/test.jpg-7efcacddaf75267adb5ff056243b7832.ctex"]
+source_file="res://assets/ui/in-game/create button.png"
+dest_files=["res://.godot/imported/create button.png-6da0225eed5682aa041217012f1965cf.ctex"]
 
 [params]
 

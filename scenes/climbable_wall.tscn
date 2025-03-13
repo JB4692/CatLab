@@ -32,15 +32,14 @@ sources/0 = SubResource("TileSetAtlasSource_s37pm")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ougak"]
 size = Vector2(32, 63)
 
-[node name="TileMap" type="TileMap"]
+[node name="Climbable Wall" type="TileMap"]
 tile_set = SubResource("TileSet_27y7f")
 format = 2
 layer_0/tile_data = PackedInt32Array(-1, 131072, 0, -65537, 131072, 0)
 script = ExtResource("2_bl2od")
 
 [node name="Climbable Wall Detection" type="Area2D" parent="."]
-collision_layer = 5
-collision_mask = 7
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Climbable Wall Detection"]
 position = Vector2(-16, -31)

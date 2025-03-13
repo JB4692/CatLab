@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oc3rubbl2jrm"
-path="res://.godot/imported/test.jpg-7efcacddaf75267adb5ff056243b7832.ctex"
+uid="uid://budpyw1l43jav"
+path="res://.godot/imported/CREDITS.png-eaa24a333e6f9009430ee5b563ba5596.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://CatLabYOLO/Source/test.jpg"
-dest_files=["res://.godot/imported/test.jpg-7efcacddaf75267adb5ff056243b7832.ctex"]
+source_file="res://assets/ui/in-game/placeholder/CREDITS.png"
+dest_files=["res://.godot/imported/CREDITS.png-eaa24a333e6f9009430ee5b563ba5596.ctex"]
 
 [params]
 

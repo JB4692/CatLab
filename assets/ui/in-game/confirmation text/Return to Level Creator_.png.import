@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oc3rubbl2jrm"
-path="res://.godot/imported/test.jpg-7efcacddaf75267adb5ff056243b7832.ctex"
+uid="uid://mgkcpl5k3gpw"
+path="res://.godot/imported/Return to Level Creator_.png-bf3dd32e8be2aa49a814e8c3c19b97e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://CatLabYOLO/Source/test.jpg"
-dest_files=["res://.godot/imported/test.jpg-7efcacddaf75267adb5ff056243b7832.ctex"]
+source_file="res://assets/ui/in-game/confirmation text/Return to Level Creator_.png"
+dest_files=["res://.godot/imported/Return to Level Creator_.png-bf3dd32e8be2aa49a814e8c3c19b97e1.ctex"]
 
 [params]
 

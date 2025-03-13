@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oc3rubbl2jrm"
-path="res://.godot/imported/test.jpg-7efcacddaf75267adb5ff056243b7832.ctex"
+uid="uid://drrpxc4esl3wy"
+path="res://.godot/imported/Opened Asset Tab.png-26da7b6075a86499ec8b889d76d51875.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://CatLabYOLO/Source/test.jpg"
-dest_files=["res://.godot/imported/test.jpg-7efcacddaf75267adb5ff056243b7832.ctex"]
+source_file="res://assets/ui/in-game/Opened Asset Tab.png"
+dest_files=["res://.godot/imported/Opened Asset Tab.png-26da7b6075a86499ec8b889d76d51875.ctex"]
 
 [params]
 

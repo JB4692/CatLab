@@ -3,12 +3,16 @@ extends CharacterBody2D
 # TODO: improve on controls
 # - make jumping feel better  
 # - flip sprite based on movement direction
+signal healthChanged 
+signal playerRevived 
 
-var SPEED = 300.0
+var SPEED = 300.0 # 300
 var JUMP_VELOCITY = -350.0
 var start_position = Vector2(-550, 209.9991)
 var climbing = false
 var dead = false
+var health: int = 3;
+@onready var animated_sprite = $AnimatedSprite2D
 
 func set_climbing(climb: bool):
 	climbing = climb
@@ -23,13 +27,30 @@ func revive():
 	if dead: 
 		position = start_position
 		dead = false
+		health = 3; 
+		playerRevived.emit(health)
 
 func _on_player_hitbox_body_entered(body: Node2D) -> void:
+	print("Player hitbox entered by Body", body.name)
 	if body.name.contains("enemy"):
-		dead = true
-		revive()
-		
-		
+		print("Hitbox entered by body. curr Health: ", health)
+		if health > 0:
+			health = health - 1
+			print("Emitting signal")
+			healthChanged.emit()
+		elif health == 0: 
+			set_dead(true)
+			revive()
+
+func set_dead(d: bool):
+	dead = d
+
+func jump(jump_type):
+	if jump_type == "Bounce": # Only do a bit if bouncing off enemy
+		velocity.y = JUMP_VELOCITY + 150
+	else: 
+		velocity.y = JUMP_VELOCITY
+
 func _movement(delta):
 		# Add the gravity.
 	if not is_on_floor():
@@ -37,11 +58,26 @@ func _movement(delta):
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		#velocity.y = JUMP_VELOCITY
+		jump("Input")
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions
 	var direction := Input.get_axis("ui_left", "ui_right")
+	# not moving = 0, to right = 1, to left = -1 
+	
+	# flip sprite according to direction
+	if direction > 0: # facing right 
+		animated_sprite.flip_h = false
+	elif direction < 0: 
+		animated_sprite.flip_h = true
+		
+	if is_on_floor():
+		if direction == 0: 
+			animated_sprite.play("idle")
+		else: 
+			animated_sprite.play("walk")
+	else:
+		animated_sprite.play("jump")
+	
 	if direction:
 		velocity.x = direction * SPEED
 	else:
@@ -54,3 +90,16 @@ func _wall_climb(delta):
 
 	if direction: velocity = direction * SPEED/2
 	else: velocity = Vector2.ZERO
+
+
+
+func _on_player_hitbox_area_entered(area: Area2D) -> void:
+	#print(area.get_parent().name)
+	print("Area entered hitbox")
+	#if body.name == "Enemy1":
+		#print(health)
+		#if health > 0:
+			#health = health - 1
+		#elif health == 0: 
+			#set_dead(true)
+			#revive()

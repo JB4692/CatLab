@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oc3rubbl2jrm"
-path="res://.godot/imported/test.jpg-7efcacddaf75267adb5ff056243b7832.ctex"
+uid="uid://dpga6cddtamgf"
+path="res://.godot/imported/No Button.png-abddc7a4587e7381a5810ac063862f61.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://CatLabYOLO/Source/test.jpg"
-dest_files=["res://.godot/imported/test.jpg-7efcacddaf75267adb5ff056243b7832.ctex"]
+source_file="res://assets/ui/in-game/No Button.png"
+dest_files=["res://.godot/imported/No Button.png-abddc7a4587e7381a5810ac063862f61.ctex"]
 
 [params]
 

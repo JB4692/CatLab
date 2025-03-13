@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oc3rubbl2jrm"
-path="res://.godot/imported/test.jpg-7efcacddaf75267adb5ff056243b7832.ctex"
+uid="uid://r8tuopy2rfei"
+path="res://.godot/imported/Home Button.png-d748d555e670f4e75e8c72b7eb312181.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://CatLabYOLO/Source/test.jpg"
-dest_files=["res://.godot/imported/test.jpg-7efcacddaf75267adb5ff056243b7832.ctex"]
+source_file="res://assets/ui/in-game/Home Button.png"
+dest_files=["res://.godot/imported/Home Button.png-d748d555e670f4e75e8c72b7eb312181.ctex"]
 
 [params]
 

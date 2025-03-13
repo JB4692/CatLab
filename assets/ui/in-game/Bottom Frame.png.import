@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oc3rubbl2jrm"
-path="res://.godot/imported/test.jpg-7efcacddaf75267adb5ff056243b7832.ctex"
+uid="uid://bhk4e700lcfja"
+path="res://.godot/imported/Bottom Frame.png-94c2b6325310963a2774248c8a10fd59.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://CatLabYOLO/Source/test.jpg"
-dest_files=["res://.godot/imported/test.jpg-7efcacddaf75267adb5ff056243b7832.ctex"]
+source_file="res://assets/ui/in-game/Bottom Frame.png"
+dest_files=["res://.godot/imported/Bottom Frame.png-94c2b6325310963a2774248c8a10fd59.ctex"]
 
 [params]
 

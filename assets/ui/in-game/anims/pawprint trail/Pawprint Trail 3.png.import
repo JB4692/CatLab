@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oc3rubbl2jrm"
-path="res://.godot/imported/test.jpg-7efcacddaf75267adb5ff056243b7832.ctex"
+uid="uid://blpb5xci6tj6l"
+path="res://.godot/imported/Pawprint Trail 3.png-e9cef196bdba987ed9f7dde758f996c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://CatLabYOLO/Source/test.jpg"
-dest_files=["res://.godot/imported/test.jpg-7efcacddaf75267adb5ff056243b7832.ctex"]
+source_file="res://assets/ui/in-game/anims/pawprint trail/Pawprint Trail 3.png"
+dest_files=["res://.godot/imported/Pawprint Trail 3.png-e9cef196bdba987ed9f7dde758f996c6.ctex"]
 
 [params]
 

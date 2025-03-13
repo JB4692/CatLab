@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oc3rubbl2jrm"
-path="res://.godot/imported/test.jpg-7efcacddaf75267adb5ff056243b7832.ctex"
+uid="uid://vyj4p1fk2mxu"
+path="res://.godot/imported/Tab Gradient.png-394c8ea64c76bb3def449326016eb3ce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://CatLabYOLO/Source/test.jpg"
-dest_files=["res://.godot/imported/test.jpg-7efcacddaf75267adb5ff056243b7832.ctex"]
+source_file="res://assets/ui/in-game/Tab Gradient.png"
+dest_files=["res://.godot/imported/Tab Gradient.png-394c8ea64c76bb3def449326016eb3ce.ctex"]
 
 [params]
 
