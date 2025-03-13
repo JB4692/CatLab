@@ -17,12 +17,9 @@ func setMaxHearts(max: int):
 		add_child(h)
 
 func reduceHeart():
-	print(get_children().size())
 	if(get_children().size() > 0):
 		#children[get_children().size()].free()
 		get_children()[get_children().size() - 1 ].queue_free()
-		print("Remove heart now")
-	print(get_children().size())
 	
 func increaseHeart():
 	var h = heart.instantiate()

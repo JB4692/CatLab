@@ -27,8 +27,6 @@ func _ready() -> void:
 	player.healthChanged.connect(heartContainer.reduceHeart)
 	player.playerRevived.connect(heartContainer.setMaxHearts)
 
-
-
 func _process(delta: float) -> void:
 	time_label.text = "Time left: " + str(round_places(timer.time_left, 2))
 	score_label.text = "Score: " + str(score)
