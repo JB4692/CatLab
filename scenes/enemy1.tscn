@@ -23,6 +23,9 @@ texture = ExtResource("2_onn2y")
 position = Vector2(0, 1.5)
 shape = SubResource("CircleShape2D_i2jjg")
 
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
+
 [node name="Area Detection" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 2
@@ -49,6 +52,15 @@ collision_mask = 2
 target_position = Vector2(-154, 0)
 collision_mask = 2
 
+[node name="RayCast to Left for Timer" type="RayCast2D" parent="."]
+target_position = Vector2(-15, 0)
+collision_mask = 2
+
+[node name="RayCast to Right for Timer" type="RayCast2D" parent="."]
+target_position = Vector2(15, 0)
+collision_mask = 2
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="area_entered" from="Area Detection" to="." method="_on_area_detection_area_entered"]
 [connection signal="area_exited" from="Area Detection" to="." method="_on_area_detection_area_exited"]
 [connection signal="body_entered" from="Area Detection" to="." method="_on_area_detection_body_entered"]
