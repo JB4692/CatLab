@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://cu2wdn0httpg2"]
+[gd_scene load_steps=12 format=4 uid="uid://cu2wdn0httpg2"]
 
 [ext_resource type="Script" path="res://scripts/main_game.gd" id="1_j2p5a"]
 [ext_resource type="PackedScene" uid="uid://fskuxnds6xnw" path="res://scenes/heart_container.tscn" id="2_xm0e5"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c4rd71iroeb4g" path="res://assets/tilesets/world_tileset.png" id="4_dxpqb"]
 [ext_resource type="Texture2D" uid="uid://fpf5d13u0i5y" path="res://assets/tilesets/Dirt Grass and brick tileset.png" id="4_v4t08"]
 [ext_resource type="PackedScene" uid="uid://dwvxqq2rjnsxo" path="res://scenes/ingameui.tscn" id="5_ipu61"]
+[ext_resource type="PackedScene" uid="uid://b7v248yw24j2a" path="res://scenes/squirrel.tscn" id="6_wt6j1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sq400"]
 texture = ExtResource("4_v4t08")
@@ -166,6 +167,8 @@ script = ExtResource("1_j2p5a")
 
 [node name="Player" parent="." instance=ExtResource("3_mrcbi")]
 position = Vector2(-637, 0)
+collision_layer = 6
+collision_mask = 6
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -185,18 +188,22 @@ one_shot = true
 autostart = true
 
 [node name="TimerLabel" type="Label" parent="."]
-offset_left = -568.0
-offset_top = -320.0
-offset_right = -327.0
-offset_bottom = -217.0
+offset_left = -576.0
+offset_top = -271.0
+offset_right = -426.0
+offset_bottom = -226.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 
 [node name="ScoreLabel" type="Label" parent="."]
-offset_left = -22.0
-offset_top = -111.0
-offset_right = 26.0
-offset_bottom = -88.0
+offset_left = -573.0
+offset_top = -230.0
+offset_right = -525.0
+offset_bottom = -207.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="squirrel" parent="." instance=ExtResource("6_wt6j1")]
+position = Vector2(-16, -141)
 
 [node name="Coins" type="Node" parent="."]
 

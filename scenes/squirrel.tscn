@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7v248yw24j2a"]
+
+[ext_resource type="Texture2D" uid="uid://cslk7r1ug5kxv" path="res://assets/sprites/squirrel.png" id="1_h1e15"]
+[ext_resource type="Script" path="res://scripts/squirrel.gd" id="1_mvkwp"]
+[ext_resource type="PackedScene" uid="uid://paypqy8w81kp" path="res://scenes/acorn.tscn" id="2_scpj5"]
+
+[node name="squirrel" type="CharacterBody2D"]
+script = ExtResource("1_mvkwp")
+ammo = ExtResource("2_scpj5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_h1e15")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 3
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -35,8 +35,7 @@ func revive(): # put player back in start_position
 		playerRevived.emit(health)
 
 func _on_player_hitbox_body_entered(body: Node2D) -> void:
-	# print("Player hitbox entered by Body", body.name)
-	if body.name.contains("enemy"):
+	if body.name.contains("enemy") or body.name.contains("acorn"):
 		animated_sprite.animation = "flash"
 		is_flashing = true
 		print("Hitbox entered by body. Please flash")
@@ -46,6 +45,8 @@ func _on_player_hitbox_body_entered(body: Node2D) -> void:
 		elif health == 0: 
 			set_dead(true)
 			revive()
+	elif body.is_in_group("acorn"):
+		print("acorn collided")
 
 func set_dead(d: bool):
 	dead = d
