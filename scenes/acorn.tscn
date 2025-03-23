@@ -4,24 +4,22 @@
 [ext_resource type="Texture2D" uid="uid://cec2hmjqbjq63" path="res://assets/sprites/acorn.png" id="1_lsryq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bay6j"]
-radius = 15.0
-height = 50.0
+radius = 20.0
+height = 46.0
 
 [node name="acorn" type="Area2D" groups=["acorn"]]
-collision_layer = 2
+collision_layer = 40
 collision_mask = 2
 script = ExtResource("1_bue4j")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-rotation = 1.06291
 scale = Vector2(0.53, 0.54)
 texture = ExtResource("1_lsryq")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3, 1)
-rotation = 1.5708
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["acorn"]]
+position = Vector2(-1, 1)
 shape = SubResource("CapsuleShape2D_bay6j")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." groups=["acorn"]]
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]

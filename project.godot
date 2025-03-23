@@ -72,9 +72,10 @@ jump={
 
 [layer_names]
 
-2d_physics/layer_1="Player"
+2d_physics/layer_1="Player - idk wtf this is"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="climbable wall"
+2d_physics/layer_4="acorns"
 2d_physics/layer_5="Platforms"
 2d_physics/layer_6="enemy hitbox"
 

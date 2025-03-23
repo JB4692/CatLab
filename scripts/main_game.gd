@@ -102,6 +102,8 @@ func place_object(obj_array: Array) -> void:
 				place_climbable_wall(x_coord, y_coord)
 			"coin":
 				place_coin(x_coord, y_coord)
+			"squirrel":
+				place_squirrel(x_coord, y_coord)
 			_:
 				print("Could not match game object.")
 
@@ -167,6 +169,12 @@ func place_coin(x: int, y: int) -> void:
 	coin.coin_collected.connect(_on_coin_collected)
 	main_game.get_node("Coins").add_child(coin)
 	num_coins += 1
+
+func place_squirrel(x: int, y: int):
+	var squirrel_scene = load("res://scenes/squirrel.tscn")
+	var sqrl = squirrel_scene.instantiate()
+	sqrl.position = Vector2i(x, y)
+	main_game.add_child(sqrl)
 
 func round_places(num: float, places: int) -> float:
 	return (round(num*pow(10, places))/pow(10, places))
