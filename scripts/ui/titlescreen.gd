@@ -2,7 +2,7 @@ extends Control
 
 
 func _on_start_button_button_down():
-	get_tree().change_scene_to_file("res://scenes/main_game.tscn")
+	get_tree().change_scene_to_file("res://scenes/levelcreator.tscn")
 
 
 func _on_credit_button_button_down():
