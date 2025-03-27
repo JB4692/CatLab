@@ -14,8 +14,9 @@ func _ready():
 	
 func _on_hover_mouse_entered():
 	if not is_hovering:
+		print("hi")
 		is_hovering = true
-		$UI/MenuAnimator.play("fadegradient")
+		#$UI/MenuAnimator.play("fadegradient")
 		$UI/TabButton.visible = true
 		$UI/MenuAnimator.play("tabin")
 		$HideDelayTimer.stop()
@@ -33,12 +34,12 @@ func _on_animation_finished(anim_name):
 		print("huh")
 		is_hovering = false
 		$UI/TabButton.visible = false
-		$UI/MenuAnimator.play("fadegradientin")
+		#$UI/MenuAnimator.play("fadegradientin")
 		$UI/HoverArea.visible = true
 	
 func _on_TabButton_pressed():
 	in_menu = true
-	$UI/MenuAnimator.play("fadegradient")
+	#$UI/MenuAnimator.play("fadegradient")
 	$UI/HoverArea.visible = false
 	$UI/TabButton.visible = false
 	$UI/OpenTabButton.visible = true
