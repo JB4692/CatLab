@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=3 uid="uid://r1b83rtqvqia"]
+
+[ext_resource type="Script" path="res://scripts/enemy1_behavior.gd" id="1_s5lyc"]
+[ext_resource type="Texture2D" uid="uid://b30v7geewj4cv" path="res://assets/sprites/Yarn.png" id="2_onn2y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i2jjg"]
+radius = 13.0096
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wp5di"]
+size = Vector2(306, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lof4c"]
+size = Vector2(32, 8)
+
+[node name="Enemy1" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_s5lyc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_onn2y")
+
+[node name="Enemy CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("CircleShape2D_i2jjg")
+
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Area Detection" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="Area Detection CollisionShape2D" type="CollisionShape2D" parent="Area Detection"]
+position = Vector2(0, -30)
+shape = SubResource("RectangleShape2D_wp5di")
+
+[node name="Enemy1 Hitbox" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 2
+
+[node name="CollisionShape2D on Top" type="CollisionShape2D" parent="Enemy1 Hitbox"]
+position = Vector2(0, -14)
+shape = SubResource("RectangleShape2D_lof4c")
+debug_color = Color(0.506742, 0.425012, 1, 0.42)
+
+[node name="RayCast2D to Right" type="RayCast2D" parent="."]
+rotation = 3.14159
+target_position = Vector2(-154, 0)
+collision_mask = 2
+
+[node name="RayCast2D to Left" type="RayCast2D" parent="."]
+target_position = Vector2(-154, 0)
+collision_mask = 2
+
+[node name="RayCast to Left for Timer" type="RayCast2D" parent="."]
+target_position = Vector2(-15, 0)
+collision_mask = 2
+
+[node name="RayCast to Right for Timer" type="RayCast2D" parent="."]
+target_position = Vector2(15, 0)
+collision_mask = 2
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="area_entered" from="Area Detection" to="." method="_on_area_detection_area_entered"]
+[connection signal="area_exited" from="Area Detection" to="." method="_on_area_detection_area_exited"]
+[connection signal="body_entered" from="Area Detection" to="." method="_on_area_detection_body_entered"]
+[connection signal="body_exited" from="Area Detection" to="." method="_on_area_detection_body_exited"]
+[connection signal="area_entered" from="Enemy1 Hitbox" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Enemy1 Hitbox" to="." method="_on_area_2d_area_exited"]

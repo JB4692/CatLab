@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Cat Lab"
-run/main_scene="res://scenes/main game.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+run/main_scene="uid://clcke2cxq1jip"
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [input]
 
@@ -65,3 +69,16 @@ jump={
 "deadzone": 0.5,
 "events": []
 }
+
+[layer_names]
+
+2d_physics/layer_1="Player - idk wtf this is"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="climbable wall"
+2d_physics/layer_4="acorns"
+2d_physics/layer_5="Platforms"
+2d_physics/layer_6="enemy hitbox"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

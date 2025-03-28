@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://clcke2cxq1jip"]
+
+[ext_resource type="Script" uid="uid://bnox1dqj8erag" path="res://scripts/ui/titlescreen.gd" id="1_t7v6v"]
+[ext_resource type="Texture2D" uid="uid://djbyvud5eeui7" path="res://assets/ui/in-game/placeholder/START GAME.png" id="1_tt55a"]
+[ext_resource type="Texture2D" uid="uid://budpyw1l43jav" path="res://assets/ui/in-game/placeholder/CREDITS.png" id="2_t7v6v"]
+[ext_resource type="Script" uid="uid://bcyito35yxdei" path="res://scripts/ui/button.gd" id="3_v6ms7"]
+[ext_resource type="Texture2D" uid="uid://ds0qowjyo8lnd" path="res://assets/ui/in-game/placeholder/QUIT.png" id="3_vhbaf"]
+
+[node name="Titlescreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t7v6v")
+
+[node name="ButtonContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.7
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="StartButton" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+button_mask = 7
+icon = ExtResource("1_tt55a")
+flat = true
+icon_alignment = 1
+script = ExtResource("3_v6ms7")
+
+[node name="CreditButton" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+button_mask = 7
+icon = ExtResource("2_t7v6v")
+flat = true
+icon_alignment = 1
+script = ExtResource("3_v6ms7")
+
+[node name="QuitButton" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+button_mask = 7
+icon = ExtResource("3_vhbaf")
+flat = true
+icon_alignment = 1
+script = ExtResource("3_v6ms7")
+
+[connection signal="button_down" from="ButtonContainer/StartButton" to="." method="_on_start_button_button_down"]
+[connection signal="mouse_entered" from="ButtonContainer/StartButton" to="ButtonContainer/StartButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ButtonContainer/StartButton" to="ButtonContainer/StartButton" method="_on_mouse_exited"]
+[connection signal="button_down" from="ButtonContainer/CreditButton" to="." method="_on_credit_button_button_down"]
+[connection signal="mouse_entered" from="ButtonContainer/CreditButton" to="ButtonContainer/CreditButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ButtonContainer/CreditButton" to="ButtonContainer/CreditButton" method="_on_mouse_exited"]
+[connection signal="button_down" from="ButtonContainer/QuitButton" to="." method="_on_quit_button_button_down"]
+[connection signal="mouse_entered" from="ButtonContainer/QuitButton" to="ButtonContainer/QuitButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ButtonContainer/QuitButton" to="ButtonContainer/QuitButton" method="_on_mouse_exited"]

@@ -1,0 +1,716 @@
+[gd_scene load_steps=30 format=3 uid="uid://dwvxqq2rjnsxo"]
+
+[ext_resource type="Script" uid="uid://fbux02q0ftic" path="res://scripts/ui/ingameui.gd" id="1_0ggt4"]
+[ext_resource type="Texture2D" uid="uid://dbpsgekxw4m1h" path="res://assets/ui/in-game/Closed Asset Tab.png" id="1_vu37g"]
+[ext_resource type="Texture2D" uid="uid://r8tuopy2rfei" path="res://assets/ui/in-game/Home Button.png" id="2_0ggt4"]
+[ext_resource type="Texture2D" uid="uid://nfoklbhlwatk" path="res://assets/ui/in-game/create button.png" id="3_84r2i"]
+[ext_resource type="Texture2D" uid="uid://drrpxc4esl3wy" path="res://assets/ui/in-game/Opened Asset Tab.png" id="3_bcdu4"]
+[ext_resource type="Texture2D" uid="uid://vyj4p1fk2mxu" path="res://assets/ui/in-game/Tab Gradient.png" id="4_bcdu4"]
+[ext_resource type="Script" uid="uid://bcyito35yxdei" path="res://scripts/ui/button.gd" id="6_udu7f"]
+[ext_resource type="Texture2D" uid="uid://dawv5j7itv5wb" path="res://assets/ui/in-game/Notification Pop-up.png" id="7_x5vbj"]
+[ext_resource type="Texture2D" uid="uid://b88t0ilsnp175" path="res://assets/ui/in-game/notification text/TAKING A PHOTO....png" id="8_j7bdu"]
+[ext_resource type="Texture2D" uid="uid://b7yltqphcj0ag" path="res://assets/ui/in-game/anims/pawprint trail/Pawprint Trail 1.png" id="9_75cmr"]
+[ext_resource type="Texture2D" uid="uid://blpb5xci6tj6l" path="res://assets/ui/in-game/anims/pawprint trail/Pawprint Trail 3.png" id="10_j6nbr"]
+[ext_resource type="Texture2D" uid="uid://dux1avq3h4hqh" path="res://assets/ui/in-game/anims/pawprint trail/Pawprint Trail 2.png" id="11_nj5yx"]
+[ext_resource type="Texture2D" uid="uid://5m6gmmkjfv58" path="res://assets/ui/in-game/Confirmation Popup.png" id="12_j6nbr"]
+[ext_resource type="Texture2D" uid="uid://ctl56defvju5j" path="res://assets/ui/in-game/confirmation text/Return to Title Screen_.png" id="13_xef4b"]
+[ext_resource type="Texture2D" uid="uid://mgkcpl5k3gpw" path="res://assets/ui/in-game/confirmation text/Return to Level Creator_.png" id="14_in8wn"]
+[ext_resource type="Texture2D" uid="uid://dk867q175ke2n" path="res://assets/ui/in-game/confirmation text/Ready to generate playable level_.png" id="15_in8wn"]
+[ext_resource type="Texture2D" uid="uid://8ybrlee4pmyu" path="res://assets/ui/in-game/Yes Button.png" id="15_udu7f"]
+[ext_resource type="Texture2D" uid="uid://dpga6cddtamgf" path="res://assets/ui/in-game/No Button.png" id="16_cbec7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_in8wn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_udu7f"]
+
+[sub_resource type="Animation" id="Animation_j6nbr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.121569)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TabButton:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GradientBar:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PawPrint Anim/Pawprint1:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PawPrint Anim/Pawprint2:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PawPrint Anim/Pawprint3:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Notification/PhotoNotif:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(36.5, 19.75)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("TabButton:offset_bottom")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("TabButton:offset_top")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("MenuContainer:offset_top")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("MenuContainer:offset_bottom")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Notification:offset_bottom")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Notification:offset_top")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_etwic"]
+resource_name = "fadegradient"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GradientBar:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xef4b"]
+resource_name = "fadegradientin"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GradientBar:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_udu7f"]
+resource_name = "pawtrail"
+length = 3.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PawPrint Anim/Pawprint1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.866667, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PawPrint Anim/Pawprint2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.88, 1.8, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PawPrint Anim/Pawprint3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.76667, 3, 3.33333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Notification:offset_top")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.81, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 20.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Notification:offset_bottom")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.81, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -20.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_75cmr"]
+resource_name = "slide_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.623333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.121569), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuContainer:offset_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.266667, 0.133333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [20.0, -20.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MenuContainer:offset_bottom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(-0.266667, 0.133333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-20.0, 20.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_gj7to"]
+resource_name = "slidein"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MenuContainer:offset_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.32, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 20.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MenuContainer:offset_bottom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.32, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -20.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_in8wn"]
+resource_name = "tabin"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TabButton:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nj5yx"]
+resource_name = "tabout"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TabButton:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.933333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TabButton:offset_bottom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.49, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -20.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TabButton:offset_top")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.47, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 20.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nj5yx"]
+_data = {
+&"RESET": SubResource("Animation_j6nbr"),
+&"fadegradient": SubResource("Animation_etwic"),
+&"fadegradientin": SubResource("Animation_xef4b"),
+&"pawtrail": SubResource("Animation_udu7f"),
+&"slide_up": SubResource("Animation_75cmr"),
+&"slidein": SubResource("Animation_gj7to"),
+&"tabin": SubResource("Animation_in8wn"),
+&"tabout": SubResource("Animation_nj5yx")
+}
+
+[node name="Ingameui" type="CanvasLayer"]
+layer = 11
+script = ExtResource("1_0ggt4")
+
+[node name="UI" type="Control" parent="."]
+z_index = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GradientBar" type="TextureRect" parent="UI"]
+visible = false
+z_index = -2
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -34.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+texture = ExtResource("4_bcdu4")
+
+[node name="HoverArea" type="Control" parent="UI"]
+z_index = -1
+layout_mode = 1
+anchor_top = 0.9
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 1
+
+[node name="TabButton" type="Button" parent="UI"]
+z_index = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+button_mask = 7
+icon = ExtResource("1_vu37g")
+flat = true
+icon_alignment = 1
+
+[node name="OpenTabButton" type="Button" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+icon = ExtResource("3_bcdu4")
+flat = true
+
+[node name="MenuContainer" type="HBoxContainer" parent="UI"]
+modulate = Color(1, 1, 1, 0.121569)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.9
+anchor_right = 0.5
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HomeButton" type="Button" parent="UI/MenuContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_in8wn")
+icon = ExtResource("2_0ggt4")
+flat = true
+icon_alignment = 1
+script = ExtResource("6_udu7f")
+
+[node name="CreateButton" type="Button" parent="UI/MenuContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_udu7f")
+icon = ExtResource("3_84r2i")
+flat = true
+script = ExtResource("6_udu7f")
+
+[node name="Notification" type="TextureRect" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_x5vbj")
+
+[node name="PhotoNotif" type="TextureRect" parent="UI/Notification"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -331.5
+offset_top = -30.75
+offset_right = 331.5
+offset_bottom = 30.75
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_j7bdu")
+
+[node name="MenuAnimator" type="AnimationPlayer" parent="UI"]
+libraries = {
+&"": SubResource("AnimationLibrary_nj5yx")
+}
+
+[node name="PhotoLoadAnim" type="TextureProgressBar" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7
+anchor_top = 0.5
+anchor_right = 0.7
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -14.0
+offset_right = 74.0
+offset_bottom = 127.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 2
+texture_under = ExtResource("9_75cmr")
+texture_over = ExtResource("10_j6nbr")
+texture_progress = ExtResource("10_j6nbr")
+
+[node name="Confirmation" type="TextureRect" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -267.0
+offset_top = -125.5
+offset_right = 267.0
+offset_bottom = 125.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_j6nbr")
+
+[node name="TitleText" type="TextureRect" parent="UI/Confirmation"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -226.5
+offset_top = 70.0
+offset_right = 226.5
+offset_bottom = 40.0
+grow_horizontal = 2
+texture = ExtResource("13_xef4b")
+
+[node name="CreateText" type="TextureRect" parent="UI/Confirmation"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -226.5
+offset_top = 70.0
+offset_right = 226.5
+offset_bottom = 40.0
+grow_horizontal = 2
+texture = ExtResource("14_in8wn")
+
+[node name="PlayText" type="TextureRect" parent="UI/Confirmation"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.3
+anchor_right = 0.5
+anchor_bottom = 0.3
+offset_left = -180.0
+offset_top = -47.5
+offset_right = 180.0
+offset_bottom = 47.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_in8wn")
+stretch_mode = 4
+
+[node name="PopupContainer" type="HBoxContainer" parent="UI/Confirmation"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -216.0
+offset_top = 53.0
+offset_right = 216.0
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="YesButton" type="Button" parent="UI/Confirmation/PopupContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+button_mask = 7
+icon = ExtResource("15_udu7f")
+flat = true
+script = ExtResource("6_udu7f")
+
+[node name="NoButton" type="Button" parent="UI/Confirmation/PopupContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+button_mask = 7
+icon = ExtResource("16_cbec7")
+flat = true
+script = ExtResource("6_udu7f")
+
+[node name="PawPrint Anim" type="TextureRect" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.67
+anchor_top = 0.5
+anchor_right = 0.67
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pawprint1" type="TextureRect" parent="UI/PawPrint Anim"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+offset_right = 149.0
+offset_bottom = 140.0
+texture = ExtResource("9_75cmr")
+
+[node name="Pawprint2" type="TextureRect" parent="UI/PawPrint Anim"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+offset_right = 149.0
+offset_bottom = 140.0
+texture = ExtResource("11_nj5yx")
+
+[node name="Pawprint3" type="TextureRect" parent="UI/PawPrint Anim"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+offset_right = 149.0
+offset_bottom = 141.0
+texture = ExtResource("10_j6nbr")
+
+[node name="HideDelayTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="mouse_entered" from="UI/HoverArea" to="." method="_on_hover_mouse_entered"]
+[connection signal="mouse_exited" from="UI/HoverArea" to="." method="_on_hover_mouse_exited"]
+[connection signal="button_down" from="UI/TabButton" to="." method="_on_TabButton_pressed"]
+[connection signal="button_down" from="UI/OpenTabButton" to="." method="_on_OpenTabButton_pressed"]
+[connection signal="button_down" from="UI/MenuContainer/HomeButton" to="." method="_on_HomeButton_pressed"]
+[connection signal="mouse_entered" from="UI/MenuContainer/HomeButton" to="UI/MenuContainer/HomeButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/MenuContainer/HomeButton" to="UI/MenuContainer/HomeButton" method="_on_mouse_exited"]
+[connection signal="button_down" from="UI/MenuContainer/CreateButton" to="." method="_on_CreateButton_pressed"]
+[connection signal="mouse_entered" from="UI/MenuContainer/CreateButton" to="UI/MenuContainer/CreateButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/MenuContainer/CreateButton" to="UI/MenuContainer/CreateButton" method="_on_mouse_exited"]
+[connection signal="animation_finished" from="UI/MenuAnimator" to="." method="_on_animation_finished"]
+[connection signal="button_down" from="UI/Confirmation/PopupContainer/YesButton" to="." method="_on_yes_button_button_down"]
+[connection signal="mouse_entered" from="UI/Confirmation/PopupContainer/YesButton" to="UI/Confirmation/PopupContainer/YesButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/Confirmation/PopupContainer/YesButton" to="UI/Confirmation/PopupContainer/YesButton" method="_on_mouse_exited"]
+[connection signal="button_down" from="UI/Confirmation/PopupContainer/NoButton" to="." method="_on_no_button_button_down"]
+[connection signal="mouse_entered" from="UI/Confirmation/PopupContainer/NoButton" to="UI/Confirmation/PopupContainer/NoButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/Confirmation/PopupContainer/NoButton" to="UI/Confirmation/PopupContainer/NoButton" method="_on_mouse_exited"]
+[connection signal="timeout" from="HideDelayTimer" to="." method="_on_HideDelayTimer_timeout"]
