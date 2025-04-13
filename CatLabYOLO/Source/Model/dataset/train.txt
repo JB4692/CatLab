@@ -1,0 +1,12 @@
+/home/makise/darknet/data/images/train/ITEM BACK OF CARD.png
+/home/makise/darknet/data/images/train/ITEM COIN-1.png
+/home/makise/darknet/data/images/train/ITEM COIN.png
+/home/makise/darknet/data/images/train/ITEM YARN.png
+/home/makise/darknet/data/images/train/PLAYER.png
+/home/makise/darknet/data/images/train/TERRAIN BACK OF CARD.png
+/home/makise/darknet/data/images/train/TERRAIN BLUE FLOWER.png
+/home/makise/darknet/data/images/train/TERRAIN DIRT FRONT.png
+/home/makise/darknet/data/images/train/TERRAIN DIRT SLOPE FRONT.png
+/home/makise/darknet/data/images/train/TERRAIN GRASS FRONT.png
+/home/makise/darknet/data/images/train/TERRAIN GRASS SLOPE FRONT.png
+/home/makise/darknet/data/images/train/TERRAIN YELLOW FLOWER.png

@@ -2,12 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://dwvxqq2rjnsxo" path="res://scenes/ingameui.tscn" id="1_whcht"]
 [ext_resource type="Texture2D" uid="uid://c58g5h6vsls2o" path="res://assets/ui/in-game/Play Button.png" id="2_5f48u"]
-[ext_resource type="Script" uid="uid://bcyito35yxdei" path="res://scripts/ui/button.gd" id="3_f1uha"]
+[ext_resource type="Script" path="res://scripts/ui/button.gd" id="3_f1uha"]
 [ext_resource type="Texture2D" uid="uid://8fw7cytdfpo1" path="res://assets/ui/in-game/Level Creator Grid.png" id="3_ycmo0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5f48u"]
 
 [node name="Ingameui" instance=ExtResource("1_whcht")]
+
+[node name="OpenTabButton" parent="UI" index="3"]
+visible = true
 
 [node name="CreateButton" parent="UI/MenuContainer" index="1"]
 visible = false
@@ -21,12 +24,29 @@ icon = ExtResource("2_5f48u")
 flat = true
 script = ExtResource("3_f1uha")
 
+[node name="Notification" parent="UI" index="5"]
+offset_left = -368.0
+offset_right = 368.0
+
+[node name="PawPrint Anim" parent="UI" index="9"]
+visible = true
+anchor_left = 0.778
+anchor_right = 0.853
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
 [node name="GRID" type="TextureRect" parent="UI" index="10"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("3_ycmo0")
+expand_mode = 1
 
 [connection signal="button_down" from="UI/MenuContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="mouse_entered" from="UI/MenuContainer/PlayButton" to="UI/MenuContainer/PlayButton" method="_on_mouse_entered"]
