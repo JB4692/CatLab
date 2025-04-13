@@ -15,7 +15,7 @@ texture = ExtResource("1_h1e15")
 collision_mask = 3
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.5
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

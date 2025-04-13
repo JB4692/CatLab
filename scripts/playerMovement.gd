@@ -8,7 +8,7 @@ signal playerRevived
 
 var speed = 300.0 # 300
 var JUMP_VELOCITY = -350.0
-var start_position = Vector2(-550, 209.9991)
+var start_position
 var climbing = false
 var dead = false
 var health: int = 3;
@@ -39,12 +39,6 @@ func _on_player_hitbox_body_entered(body: Node2D) -> void:
 		animated_sprite.animation = "flash"
 		is_flashing = true
 		healthUpdate(1)
-		#if health > 0:
-			#health = health - 1
-			#healthChanged.emit()
-		#elif health == 0: 
-			#set_dead(true)
-			#revive()
 
 func set_dead(d: bool):
 	dead = d
@@ -101,23 +95,18 @@ func _wall_climb(delta):
 	animated_sprite.play("climb")
 
 func _on_player_hitbox_area_entered(area: Area2D) -> void:
-	#print(area.get_parent().name)
-	#print("Area entered hitbox")
-	#if body.name == "Enemy1":
-		#print(health)
-		#if health > 0:
-			#health = health - 1
-		#elif health == 0: 
-			#set_dead(true)
-			#revive()
 	if area.name.contains("acorn"):
 		print("Hit by acorn.")
 		healthUpdate(1)
 
 func healthUpdate(amount: int):
+	health -= amount;
 	if health > 0:
-		health = health - amount
+		#health = health - amount
 		healthChanged.emit()
 	elif health == 0: 
 		set_dead(true)
 		revive()
+
+func set_start_position(pos: Vector2i):
+	start_position = pos
