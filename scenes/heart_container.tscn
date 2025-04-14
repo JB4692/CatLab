@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://fskuxnds6xnw"]
 
-[ext_resource type="Script" path="res://scripts/heart_container.gd" id="1_f1l4l"]
+[ext_resource type="Script" uid="uid://3n0nr7nihv83" path="res://scripts/heart_container.gd" id="1_f1l4l"]
 
 [node name="Heart Container" type="HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)

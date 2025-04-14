@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://r1b83rtqvqia"]
 
-[ext_resource type="Script" path="res://scripts/enemy1_behavior.gd" id="1_s5lyc"]
+[ext_resource type="Script" uid="uid://dt2pue5uo5sx4" path="res://scripts/enemy1_behavior.gd" id="1_s5lyc"]
 [ext_resource type="Texture2D" uid="uid://b30v7geewj4cv" path="res://assets/sprites/Yarn.png" id="2_onn2y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i2jjg"]

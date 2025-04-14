@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://2tfqgv8xq70s"]
 
 [ext_resource type="Texture2D" uid="uid://fpf5d13u0i5y" path="res://assets/tilesets/Dirt Grass and brick tileset.png" id="1_rvhcv"]
-[ext_resource type="Script" path="res://scripts/climbable_wall.gd" id="2_bl2od"]
+[ext_resource type="Script" uid="uid://bl80p66rnnmvk" path="res://scripts/climbable_wall.gd" id="2_bl2od"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s37pm"]
 texture = ExtResource("1_rvhcv")

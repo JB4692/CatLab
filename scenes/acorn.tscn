@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://paypqy8w81kp"]
 
-[ext_resource type="Script" path="res://scripts/acorn.gd" id="1_bue4j"]
+[ext_resource type="Script" uid="uid://df4ettstcn3bw" path="res://scripts/acorn.gd" id="1_bue4j"]
 [ext_resource type="Texture2D" uid="uid://cec2hmjqbjq63" path="res://assets/sprites/acorn.png" id="1_lsryq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bay6j"]

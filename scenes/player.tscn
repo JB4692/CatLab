@@ -1,6 +1,6 @@
 [gd_scene load_steps=33 format=3 uid="uid://bk3qlfir1vuvf"]
 
-[ext_resource type="Script" path="res://scripts/playerMovement.gd" id="1_avgps"]
+[ext_resource type="Script" uid="uid://2d47nl5f70oo" path="res://scripts/playerMovement.gd" id="1_avgps"]
 [ext_resource type="Texture2D" uid="uid://udp5e1k3uq4n" path="res://assets/sprites/doctor flashing.png" id="2_38psj"]
 [ext_resource type="Texture2D" uid="uid://buj1pg0w560ca" path="res://assets/sprites/doctor climb.png" id="2_a508i"]
 [ext_resource type="Texture2D" uid="uid://cu830eonsvppc" path="res://assets/sprites/doctor_spritesheet.png" id="2_j36sl"]

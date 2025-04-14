@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cxiwyn6x0t1o7"]
 
-[ext_resource type="Script" path="res://scripts/switch_to_eol.gd" id="1_0wyla"]
+[ext_resource type="Script" uid="uid://cycv7ruv6jsgi" path="res://scripts/switch_to_eol.gd" id="1_0wyla"]
 [ext_resource type="Texture2D" uid="uid://dyrllecegk76c" path="res://assets/sprites/SpecialBlock.png" id="2_i85a8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_41pxs"]
