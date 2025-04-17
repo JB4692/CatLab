@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c4rd71iroeb4g" path="res://assets/tilesets/world_tileset.png" id="4_dxpqb"]
 [ext_resource type="Texture2D" uid="uid://fpf5d13u0i5y" path="res://assets/tilesets/Dirt Grass and brick tileset.png" id="4_v4t08"]
 [ext_resource type="PackedScene" uid="uid://dwvxqq2rjnsxo" path="res://scenes/ingameui.tscn" id="5_ipu61"]
-[ext_resource type="Script" path="res://scenes/killzone.gd" id="7_sris1"]
+[ext_resource type="Script" path="res://scripts/killzone.gd" id="7_sris1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sq400"]
 texture = ExtResource("4_v4t08")

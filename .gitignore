@@ -5,3 +5,5 @@
 /PyToGodotTesting/
 *.tmp
 *.import
+
+*.translation

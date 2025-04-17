@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://2tfqgv8xq70s"]
+
+[ext_resource type="Texture2D" uid="uid://dgad0b8j0t3b1" path="res://assets/sprites/tower.png" id="2_7wli6"]
+[ext_resource type="Script" path="res://scripts/climbable_wall.gd" id="2_bl2od"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ougak"]
+size = Vector2(32, 63)
+
+[node name="tower" type="StaticBody2D"]
+script = ExtResource("2_bl2od")
+
+[node name="Climbable Wall Detection" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Climbable Wall Detection"]
+position = Vector2(-16, -31)
+shape = SubResource("RectangleShape2D_ougak")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-16, -31.5)
+scale = Vector2(1.0625, 1.96875)
+texture = ExtResource("2_7wli6")
+
+[connection signal="body_entered" from="Climbable Wall Detection" to="." method="_on_climbable_wall_detection_body_entered"]
+[connection signal="body_exited" from="Climbable Wall Detection" to="." method="_on_climbable_wall_detection_body_exited"]

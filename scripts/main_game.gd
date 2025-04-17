@@ -23,7 +23,7 @@ var score = 0
 
 func _ready() -> void:
 	#var file_to_read: String = "saves/save1.cfg"
-	var file_to_read: String = "res://CatLabYOLO/Source/current_objects.csv"
+	var file_to_read: String = "res://CatLabYOLO/Source/saves/current_objects.csv"
 	load_from_file_on_start(file_to_read)
 	heartContainer.setMaxHearts(player.health)	
 	player.healthChanged.connect(heartContainer.reduceHeart)
@@ -80,32 +80,31 @@ func parse_line(line: String) -> Array:
 
 func place_object(obj_array: Array) -> void:
 	for i in range(len(obj_array)):
+		var type_of_block = obj_array[i][0]
 		var x_coord = int(obj_array[i][1])
 		var y_coord = int(obj_array[i][2])
-		
-		match obj_array[i][0]:
+		var width = int(obj_array[i][3])
+		var height = int(obj_array[i][4])
+		match type_of_block:
 			"Terrain":
-				place_dirt(x_coord, y_coord)
+				place_block(type_of_block, x_coord, y_coord, width, height)
 			"Grass":
-				var length = 1
-				var width = int(obj_array[i][3])
-				var height = int(obj_array[i][4])
-				place_test_grass(x_coord, y_coord, width, height)
-				#place_grass(x_coord, y_coord, length)
+				#place_grass(x_coord, y_coord, width, height)
+				place_block(type_of_block, x_coord, y_coord, width, height)
 			"Brick":
-				place_brick(x_coord, y_coord)
+				place_block(type_of_block, x_coord, y_coord, width, height)
+			"Tower":
+				#place_climbable_wall(x_coord, y_coord)
+				place_tower(x_coord, y_coord, width, height)
 			"Player":
-				place_player(x_coord, y_coord)
+				place_player(x_coord, y_coord, width, height)
 			"Litter":
 				place_litter_box(x_coord, y_coord)
 			"Special":
-				#var distance = int(obj_array[i][3])
 				var distance = 100
 				place_moving_platform(x_coord, y_coord, distance)
 			"Enemy1":
 				place_enemy1(x_coord, y_coord)
-			"Climbable_wall":
-				place_climbable_wall(x_coord, y_coord)
 			"Coin":
 				place_coin(x_coord, y_coord)
 			"Squirrel":
@@ -113,49 +112,64 @@ func place_object(obj_array: Array) -> void:
 			_:
 				print("Could not match game object: ", obj_array[i][0])
 
-#tile are placed via TILE GRID positions\
-func place_dirt(x: int, y: int) -> void:
-	var dirt_atlas_coord = Vector2i(0, 0)
-	var pixel_to_tile_coord = get_tile_from_position(Vector2(x, y))
-	platforms.set_cell(0, pixel_to_tile_coord, 0, dirt_atlas_coord, 0)
-	
-func place_test_grass(x: int, y: int, width: int, height: int):
+func place_block(name: String, x: int, y: int, width: int, height: int) -> void:
+	var dim = max(width, height)
 	var pos = Vector2i(x - window_x/2, y - window_y/2)
-	var grass_scene = load("res://scenes/grass_test.tscn")
-	var grass = grass_scene.instantiate()
-	grass.position = pos
-	grass.get_node("Sprite2D").scale = Vector2(width/32, height/32)
-	grass.get_node("CollisionShape2D").scale = Vector2(width/32, height/32)
-	main_game.add_child(grass)
+	var block_scene = load("res://scenes/blocks/" + name.to_lower() + ".tscn")
+	var block = block_scene.instantiate()
+	block.position = pos
+	block.get_node("Sprite2D").scale = Vector2(dim/32, dim/32)
+	block.get_node("CollisionShape2D").scale = Vector2(dim/32, dim/32)
+	main_game.add_child(block)
 	
-func place_grass(x: int, y: int, length: int) -> void:
-	var grass_atlas_coord = Vector2i(0,1)
-	var pixel_to_tile_coord = get_tile_from_position(Vector2(x, y))
-	platforms.set_cell(0, pixel_to_tile_coord, 0, grass_atlas_coord, 0)
+#func place_terrain(x: int, y: int, width: int, height: int) -> void:
+	#var dirt_atlas_coord = Vector2i(0, 0)
+	#var pixel_to_tile_coord = get_tile_from_position(Vector2(x, y))
+	#platforms.set_cell(0, pixel_to_tile_coord, 0, dirt_atlas_coord, 0)
 
-func place_brick(x: int, y: int) -> void:
-	var brick_atlas_coord = Vector2i(2,0)
-	var pixel_to_tile_coord = get_tile_from_position(Vector2(x, y))
-	platforms.set_cell(0, pixel_to_tile_coord, 0, brick_atlas_coord, 0)
+#func place_grass(x: int, y: int, width: int, height: int):
+	#var dim = max(width, height)
+	#var pos = Vector2i(x - window_x/2, y - window_y/2)
+	#var grass_scene = load("res://scenes/blocks/grass.tscn")
+	#var grass = grass_scene.instantiate()
+	#grass.position = pos
+	#grass.get_node("Sprite2D").scale = Vector2(dim/32, dim/32)
+	#grass.get_node("CollisionShape2D").scale = Vector2(dim/32, dim/32)
+	#main_game.add_child(grass)
 
-func place_climbable_wall(x: int, y: int) -> void:
-	var tile_size = 32
-	var climbable_wall_scene = load("res://scenes/climbable_wall.tscn")
-	var c_wall = climbable_wall_scene.instantiate()
-	c_wall.position = Vector2i(x * tile_size - window_x/2, y * tile_size - window_y/2)
-	c_wall.name = "climbable_wall" + str(num_climbable_walls)
-	num_climbable_walls += 1 
-	main_game.add_child(c_wall)
+#func place_brick(x: int, y: int) -> void:
+	#var brick_atlas_coord = Vector2i(2,0)
+	#var pixel_to_tile_coord = get_tile_from_position(Vector2(x, y))
+	#platforms.set_cell(0, pixel_to_tile_coord, 0, brick_atlas_coord, 0)
+	
+func place_tower(x: int, y: int, width: int, height: int):
+	var pos = Vector2i(x - window_x/2, y - window_y/2)
+	var tower_scene = load("res://scenes/blocks/tower.tscn")
+	var tower = tower_scene.instantiate()
+	if tower:
+		tower.position = Vector2i(x - window_x/2, y - window_y/2)
+		tower.get_node("Sprite2D").scale = Vector2(width/32, height/32)
+		#tower.get_node("Area2D/CollisionShape2D").scale = Vector2(width/32, height/32)
+	main_game.add_child(tower)
+	
+#func place_climbable_wall(x: int, y: int) -> void:
+	#var tile_size = 32
+	#var climbable_wall_scene = load("res://scenes/blocks/climbable_wall.tscn")
+	#var c_wall = climbable_wall_scene.instantiate()
+	#c_wall.position = Vector2i(x * tile_size - window_x/2, y * tile_size - window_y/2)
+	#c_wall.name = "climbable_wall" + str(num_climbable_walls)
+	#num_climbable_walls += 1 
+	#main_game.add_child(c_wall)
 
 #player is placed via PIXEL positions
-func place_player(x: int, y: int) -> void:
+func place_player(x: int, y: int, width: int, height: int) -> void:
 	var pos = Vector2i(x - window_x/2, y - window_y/2)
 	player.set_start_position(pos)
 	player.position = Vector2i(pos)
-	player.scale = Vector2(2, 2)
+	player.scale = Vector2(width/32, height/32)
 	
 func place_moving_platform(start_x: int, start_y: int, distance: int) -> void:
-	var linear_moving_platform_scene = load("res://scenes/moving_platform.tscn")
+	var linear_moving_platform_scene = load("res://scenes/blocks/moving_platform.tscn")
 	var platform = linear_moving_platform_scene.instantiate()
 	platform.position = Vector2i(start_x - window_x/2, start_y - window_y/2)
 	platform.name = "moving_platform" + str(num_moving_platforms)
@@ -167,13 +181,13 @@ func place_moving_platform(start_x: int, start_y: int, distance: int) -> void:
 #coin in place for the litter box right now. 
 #eol = end of level
 func place_litter_box(x: int, y: int) -> void:
-	var eol_scene = load("res://scenes/level_endpoint.tscn")
+	var eol_scene = load("res://scenes/blocks/level_endpoint.tscn")
 	var eol_object = eol_scene.instantiate()
 	eol_object.position = Vector2i(x - window_x/2, y - window_y/2)
 	main_game.add_child(eol_object)
 	
 func place_enemy1(x: int, y: int) -> void:
-	var enemy1_scene = load("res://scenes/enemy1.tscn")
+	var enemy1_scene = load("res://scenes/enemies/enemy1.tscn")
 	var enemy = enemy1_scene.instantiate()
 	enemy.position = Vector2i(x, y)
 	enemy.name = "enemy" + str(num_enemies)
@@ -181,7 +195,7 @@ func place_enemy1(x: int, y: int) -> void:
 	num_enemies += 1
 	
 func place_coin(x: int, y: int) -> void:
-	var coin_scene = load("res://scenes/coin.tscn")
+	var coin_scene = load("res://scenes/items/coin.tscn")
 	var coin = coin_scene.instantiate()
 	coin.position = Vector2i(x - 1152/2, y- 648/2)
 	coin.name = "coin" + str(num_coins)
@@ -190,11 +204,13 @@ func place_coin(x: int, y: int) -> void:
 	num_coins += 1
 
 func place_squirrel(x: int, y: int):
-	var squirrel_scene = load("res://scenes/squirrel.tscn")
+	var squirrel_scene = load("res://scenes/enemies/squirrel.tscn")
 	var sqrl = squirrel_scene.instantiate()
 	sqrl.position = Vector2i(x, y)
 	main_game.add_child(sqrl)
-
+	
+	
+# OTHER HELPER FUNCTIONS =======================================================
 func round_places(num: float, places: int) -> float:
 	return (round(num*pow(10, places))/pow(10, places))
 

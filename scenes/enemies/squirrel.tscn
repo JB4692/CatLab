@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cslk7r1ug5kxv" path="res://assets/sprites/squirrel.png" id="1_h1e15"]
 [ext_resource type="Script" path="res://scripts/squirrel.gd" id="1_mvkwp"]
-[ext_resource type="PackedScene" uid="uid://paypqy8w81kp" path="res://scenes/acorn.tscn" id="2_scpj5"]
+[ext_resource type="PackedScene" uid="uid://paypqy8w81kp" path="res://scenes/enemies/acorn.tscn" id="2_scpj5"]
 
 [node name="squirrel" type="CharacterBody2D"]
 script = ExtResource("1_mvkwp")
