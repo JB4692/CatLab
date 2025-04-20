@@ -1,9 +1,100 @@
-[gd_scene load_steps=5 format=3 uid="uid://clcke2cxq1jip"]
+[gd_scene load_steps=14 format=3 uid="uid://clcke2cxq1jip"]
 
 [ext_resource type="Script" uid="uid://bnox1dqj8erag" path="res://scripts/ui/titlescreen.gd" id="1_t7v6v"]
 [ext_resource type="Texture2D" uid="uid://djbyvud5eeui7" path="res://assets/ui/in-game/placeholder/START GAME.png" id="1_tt55a"]
 [ext_resource type="Script" uid="uid://bcyito35yxdei" path="res://scripts/ui/button.gd" id="3_v6ms7"]
 [ext_resource type="Texture2D" uid="uid://ds0qowjyo8lnd" path="res://assets/ui/in-game/placeholder/QUIT.png" id="3_vhbaf"]
+[ext_resource type="Texture2D" uid="uid://cbbvws28m1r2f" path="res://assets/ui/in-game/titlescreen/Cat Lab Logo_F1.png" id="5_vhbaf"]
+[ext_resource type="PackedScene" uid="uid://bp7lt18vh3vp7" path="res://scenes/circles.tscn" id="6_v6ms7"]
+[ext_resource type="Texture2D" uid="uid://oomaakqkqbpd" path="res://assets/ui/in-game/titlescreen/Cat Lab Logo_F2.png" id="6_w77yj"]
+[ext_resource type="Texture2D" uid="uid://8wi0su004qwn" path="res://assets/ui/in-game/titlescreen/Cat Lab Logo.png" id="7_rpvs4"]
+[ext_resource type="Texture2D" uid="uid://b58r7l7gebhuh" path="res://assets/ui/in-game/titlescreen/Cat Lab Logo_F3.png" id="7_v7hj3"]
+[ext_resource type="Texture2D" uid="uid://c8btn55qy07cg" path="res://assets/ui/in-game/titlescreen/Cat Lab Logo_F4.png" id="8_8or72"]
+
+[sub_resource type="Animation" id="Animation_w77yj"]
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("a1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("a2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("a3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vhbaf"]
+resource_name = "intro"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("a1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.966667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("a2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.13333, 2.3, 2.33333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("a3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.03333, 2.33333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v6ms7"]
+_data = {
+&"RESET": SubResource("Animation_w77yj"),
+&"intro": SubResource("Animation_vhbaf")
+}
 
 [node name="Titlescreen" type="Control"]
 layout_mode = 3
@@ -14,22 +105,35 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_t7v6v")
 
-[node name="ButtonContainer" type="VBoxContainer" parent="."]
+[node name="BG" type="ColorRect" parent="."]
+z_index = -2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.995317, 1.01065)
+color = Color(0.741176, 0.823529, 0.815686, 1)
+
+[node name="Menu" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.6
 anchor_right = 0.5
-anchor_bottom = 0.7
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchor_bottom = 0.927
+offset_left = -237.5
+offset_top = -22.7
+offset_right = 237.5
+offset_bottom = 22.7
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 30
 
-[node name="StartButton" type="Button" parent="ButtonContainer"]
+[node name="StartButton" type="Button" parent="Menu"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 button_mask = 7
@@ -38,7 +142,7 @@ flat = true
 icon_alignment = 1
 script = ExtResource("3_v6ms7")
 
-[node name="QuitButton" type="Button" parent="ButtonContainer"]
+[node name="QuitButton" type="Button" parent="Menu"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 button_mask = 7
@@ -47,9 +151,97 @@ flat = true
 icon_alignment = 1
 script = ExtResource("3_v6ms7")
 
-[connection signal="button_down" from="ButtonContainer/StartButton" to="." method="_on_start_button_button_down"]
-[connection signal="mouse_entered" from="ButtonContainer/StartButton" to="ButtonContainer/StartButton" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="ButtonContainer/StartButton" to="ButtonContainer/StartButton" method="_on_mouse_exited"]
-[connection signal="button_down" from="ButtonContainer/QuitButton" to="." method="_on_quit_button_button_down"]
-[connection signal="mouse_entered" from="ButtonContainer/QuitButton" to="ButtonContainer/QuitButton" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="ButtonContainer/QuitButton" to="ButtonContainer/QuitButton" method="_on_mouse_exited"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_v6ms7")
+}
+
+[node name="Splash" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.0
+offset_top = -163.0
+offset_right = 1150.0
+offset_bottom = 904.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.27, 0.27)
+texture = ExtResource("5_vhbaf")
+
+[node name="a1" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -177.0
+offset_top = -148.0
+offset_right = 1108.0
+offset_bottom = 919.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.27, 0.27)
+texture = ExtResource("6_w77yj")
+
+[node name="a2" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -177.0
+offset_top = -148.0
+offset_right = 1294.0
+offset_bottom = 919.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.27, 0.27)
+texture = ExtResource("7_v7hj3")
+
+[node name="a3" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -177.0
+offset_top = -148.0
+offset_right = 1294.0
+offset_bottom = 919.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.27, 0.27)
+texture = ExtResource("8_8or72")
+
+[node name="circles" parent="." instance=ExtResource("6_v6ms7")]
+z_index = -1
+
+[node name="Logo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -203.0
+offset_top = 40.825
+offset_right = 1268.0
+offset_bottom = 1107.82
+grow_horizontal = 2
+scale = Vector2(0.285, 0.285)
+texture = ExtResource("7_rpvs4")
+
+[connection signal="button_down" from="Menu/StartButton" to="." method="_on_start_button_button_down"]
+[connection signal="mouse_entered" from="Menu/StartButton" to="Menu/StartButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Menu/StartButton" to="Menu/StartButton" method="_on_mouse_exited"]
+[connection signal="button_down" from="Menu/QuitButton" to="." method="_on_quit_button_button_down"]
+[connection signal="mouse_entered" from="Menu/QuitButton" to="Menu/QuitButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Menu/QuitButton" to="Menu/QuitButton" method="_on_mouse_exited"]

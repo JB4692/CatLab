@@ -2,6 +2,9 @@ extends Control
 
 var process_id = null
 
+func _ready():
+	$circles.modulate = Color(1, 1, 1, 0.3) 
+
 func _on_edit_button_button_down():
 	get_tree().change_scene_to_file("res://scenes/levelcreator.tscn")
 

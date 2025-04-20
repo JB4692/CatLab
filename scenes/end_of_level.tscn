@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdtdg0i7uc8gh"]
+[gd_scene load_steps=7 format=3 uid="uid://cdtdg0i7uc8gh"]
 
 [ext_resource type="Script" uid="uid://ckhd388c83cba" path="res://scripts/ui/end_of_level.gd" id="1_5m6nd"]
 [ext_resource type="Script" uid="uid://bcyito35yxdei" path="res://scripts/ui/button.gd" id="3_twyrv"]
 [ext_resource type="Texture2D" uid="uid://qd2ei8gqq00b" path="res://assets/ui/in-game/endgame/Replay Button.png" id="4_bd6su"]
 [ext_resource type="Texture2D" uid="uid://o3h4wf8tgkkc" path="res://assets/ui/in-game/endgame/Edit Button.png" id="5_q2oaj"]
+[ext_resource type="PackedScene" uid="uid://bp7lt18vh3vp7" path="res://scenes/circles.tscn" id="6_bd6su"]
 [ext_resource type="Texture2D" uid="uid://bnjfrjq5rta5q" path="res://assets/ui/in-game/endgame/Return Button.png" id="6_mxr1s"]
 
 [node name="End Screen" type="Control"]
@@ -14,6 +15,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5m6nd")
+
+[node name="BG" type="ColorRect" parent="."]
+z_index = -2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.992636, 1.02654)
+color = Color(0.741176, 0.823529, 0.815686, 1)
 
 [node name="ButtonContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -56,6 +68,9 @@ icon = ExtResource("6_mxr1s")
 flat = true
 icon_alignment = 1
 script = ExtResource("3_twyrv")
+
+[node name="circles" parent="." instance=ExtResource("6_bd6su")]
+z_index = -1
 
 [connection signal="button_down" from="ButtonContainer/ReplayButton" to="." method="_on_replay_button_button_down"]
 [connection signal="mouse_entered" from="ButtonContainer/ReplayButton" to="ButtonContainer/ReplayButton" method="_on_mouse_entered"]
