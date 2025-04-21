@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://cu2wdn0httpg2"]
+[gd_scene load_steps=16 format=4 uid="uid://cu2wdn0httpg2"]
 
 [ext_resource type="Script" path="res://scripts/main_game.gd" id="1_j2p5a"]
 [ext_resource type="PackedScene" uid="uid://fskuxnds6xnw" path="res://scenes/heart_container.tscn" id="2_xm0e5"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dwvxqq2rjnsxo" path="res://scenes/ingameui.tscn" id="5_ipu61"]
 [ext_resource type="PackedScene" uid="uid://b7v248yw24j2a" path="res://scenes/enemies/sprayer.tscn" id="7_p2k8d"]
 [ext_resource type="Script" path="res://scripts/killzone.gd" id="7_sris1"]
+[ext_resource type="PackedScene" uid="uid://c5ypybcr7k3mr" path="res://scenes/static_platform_l.tscn" id="9_nn57j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sq400"]
 texture = ExtResource("4_v4t08")
@@ -174,7 +175,7 @@ script = ExtResource("1_j2p5a")
 [node name="Heart Container" parent="CanvasLayer" instance=ExtResource("2_xm0e5")]
 
 [node name="Player" parent="." instance=ExtResource("3_mrcbi")]
-position = Vector2(-637, 0)
+position = Vector2(-535, 13)
 collision_layer = 255
 collision_mask = 255
 
@@ -241,6 +242,21 @@ script = ExtResource("7_sris1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 position = Vector2(0, 344)
 shape = SubResource("RectangleShape2D_g41mg")
+
+[node name="Static Platform Large" parent="." instance=ExtResource("9_nn57j")]
+position = Vector2(-490, 52)
+
+[node name="Static Platform Large2" parent="." instance=ExtResource("9_nn57j")]
+position = Vector2(-329, 50)
+
+[node name="Static Platform Large3" parent="." instance=ExtResource("9_nn57j")]
+position = Vector2(-170, 9)
+
+[node name="Static Platform Large4" parent="." instance=ExtResource("9_nn57j")]
+position = Vector2(-12, -22)
+
+[node name="Static Platform Large5" parent="." instance=ExtResource("9_nn57j")]
+position = Vector2(-15, 202)
 
 [connection signal="timeout" from="Timer" to="." method="_on_countdown_timer_timeout"]
 [connection signal="body_entered" from="Killzone" to="." method="_on_killzone_body_entered"]
