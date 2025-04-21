@@ -68,7 +68,7 @@ def draw_predictions(image, predictions):
 
 def save_to_csv(image_objects):
     script_path = os.path.dirname(__file__)
-    full_path = os.path.join(script_path, 'saves\\current_objects.csv')
+    full_path = os.path.join(script_path, 'saves/current_objects.csv')
     with open(full_path, mode="w", newline="") as file:
         writer = csv.writer(file)
         for obj in image_objects:

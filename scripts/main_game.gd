@@ -89,7 +89,6 @@ func place_object(obj_array: Array) -> void:
 			"Terrain":
 				place_block(type_of_block, x_coord, y_coord, width, height)
 			"Grass":
-				#place_grass(x_coord, y_coord, width, height)
 				place_block(type_of_block, x_coord, y_coord, width, height)
 			"Brick":
 				place_block(type_of_block, x_coord, y_coord, width, height)
@@ -99,12 +98,12 @@ func place_object(obj_array: Array) -> void:
 			"Player":
 				place_player(x_coord, y_coord, width, height)
 			"Litter":
-				place_litter_box(x_coord, y_coord)
+				place_litter_box(x_coord, y_coord, width, height)
 			"Special":
 				var distance = 100
-				place_moving_platform(x_coord, y_coord, distance)
-			"Enemy1":
-				place_enemy1(x_coord, y_coord)
+				place_moving_platform(x_coord, y_coord, width, height)
+			"Yarn":
+				place_enemy(x_coord, y_coord)
 			"Coin":
 				place_coin(x_coord, y_coord)
 			"Squirrel":
@@ -113,7 +112,8 @@ func place_object(obj_array: Array) -> void:
 				print("Could not match game object: ", obj_array[i][0])
 
 func place_block(name: String, x: int, y: int, width: int, height: int) -> void:
-	var dim = max(width, height)
+	var dim = (width + height)/2
+	#var dim = min(width, height)
 	var pos = Vector2i(x - window_x/2, y - window_y/2)
 	var block_scene = load("res://scenes/blocks/" + name.to_lower() + ".tscn")
 	var block = block_scene.instantiate()
@@ -166,12 +166,14 @@ func place_player(x: int, y: int, width: int, height: int) -> void:
 	var pos = Vector2i(x - window_x/2, y - window_y/2)
 	player.set_start_position(pos)
 	player.position = Vector2i(pos)
-	player.scale = Vector2(width/32, height/32)
+	player.scale = Vector2(2, 2)
 	
-func place_moving_platform(start_x: int, start_y: int, distance: int) -> void:
+func place_moving_platform(start_x: int, start_y: int, width: int, height: int) -> void:
+	var distance = 100
 	var linear_moving_platform_scene = load("res://scenes/blocks/moving_platform.tscn")
 	var platform = linear_moving_platform_scene.instantiate()
 	platform.position = Vector2i(start_x - window_x/2, start_y - window_y/2)
+	platform.scale = Vector2(width/32, height/32)
 	platform.name = "moving_platform" + str(num_moving_platforms)
 	main_game.add_child(platform)
 	var child = main_game.get_node("moving_platform" + str(num_moving_platforms))
@@ -180,15 +182,16 @@ func place_moving_platform(start_x: int, start_y: int, distance: int) -> void:
 
 #coin in place for the litter box right now. 
 #eol = end of level
-func place_litter_box(x: int, y: int) -> void:
+func place_litter_box(x: int, y: int, width: int, height: int) -> void:
 	var eol_scene = load("res://scenes/blocks/level_endpoint.tscn")
 	var eol_object = eol_scene.instantiate()
 	eol_object.position = Vector2i(x - window_x/2, y - window_y/2)
+	eol_object.scale = Vector2(width/32, height/32)
 	main_game.add_child(eol_object)
 	
-func place_enemy1(x: int, y: int) -> void:
-	var enemy1_scene = load("res://scenes/enemies/enemy1.tscn")
-	var enemy = enemy1_scene.instantiate()
+func place_enemy(x: int, y: int) -> void:
+	var enemy_scene = load("res://scenes/enemies/enemy1.tscn")
+	var enemy = enemy_scene.instantiate()
 	enemy.position = Vector2i(x, y)
 	enemy.name = "enemy" + str(num_enemies)
 	main_game.add_child(enemy)
