@@ -7,3 +7,5 @@
 *.import
 
 *.translation
+keys.py
+/__pycache__/

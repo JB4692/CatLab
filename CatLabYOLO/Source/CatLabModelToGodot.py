@@ -7,7 +7,7 @@ from roboflow import Roboflow
 import csv
 import json
 import os
-
+from keys import ROBOFLOW_API_KEY
 
 
 # YOLO Model Paths
@@ -77,7 +77,7 @@ def save_to_csv(image_objects):
 
 async def send_video(websocket, path=None):
     
-    rf = Roboflow(api_key="gboVXdmzMAqF007t2B94")
+    rf = Roboflow(api_key=ROBOFLOW_API_KEY)
     project = rf.workspace().project("catlab-level-recognition-model")
     model = project.version(4).model
     last_response = None
