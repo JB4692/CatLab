@@ -1,15 +1,15 @@
 [gd_scene load_steps=14 format=3 uid="uid://clcke2cxq1jip"]
 
-[ext_resource type="Script" uid="uid://bnox1dqj8erag" path="res://scripts/ui/titlescreen.gd" id="1_t7v6v"]
+[ext_resource type="Script" path="res://scripts/ui/titlescreen.gd" id="1_t7v6v"]
 [ext_resource type="Texture2D" uid="uid://djbyvud5eeui7" path="res://assets/ui/in-game/placeholder/START GAME.png" id="1_tt55a"]
-[ext_resource type="Script" uid="uid://bcyito35yxdei" path="res://scripts/ui/button.gd" id="3_v6ms7"]
+[ext_resource type="Script" path="res://scripts/ui/button.gd" id="3_v6ms7"]
 [ext_resource type="Texture2D" uid="uid://ds0qowjyo8lnd" path="res://assets/ui/in-game/placeholder/QUIT.png" id="3_vhbaf"]
-[ext_resource type="Texture2D" uid="uid://cbbvws28m1r2f" path="res://assets/ui/in-game/titlescreen/Cat Lab Logo_F1.png" id="5_vhbaf"]
-[ext_resource type="PackedScene" uid="uid://bp7lt18vh3vp7" path="res://scenes/circles.tscn" id="6_v6ms7"]
-[ext_resource type="Texture2D" uid="uid://oomaakqkqbpd" path="res://assets/ui/in-game/titlescreen/Cat Lab Logo_F2.png" id="6_w77yj"]
-[ext_resource type="Texture2D" uid="uid://8wi0su004qwn" path="res://assets/ui/in-game/titlescreen/Cat Lab Logo.png" id="7_rpvs4"]
-[ext_resource type="Texture2D" uid="uid://b58r7l7gebhuh" path="res://assets/ui/in-game/titlescreen/Cat Lab Logo_F3.png" id="7_v7hj3"]
-[ext_resource type="Texture2D" uid="uid://c8btn55qy07cg" path="res://assets/ui/in-game/titlescreen/Cat Lab Logo_F4.png" id="8_8or72"]
+[ext_resource type="Texture2D" uid="uid://b870udxk48icr" path="res://assets/ui/in-game/titlescreen/Cat Lab Logo_F1.png" id="5_vhbaf"]
+[ext_resource type="PackedScene" path="res://scenes/circles.tscn" id="6_v6ms7"]
+[ext_resource type="Texture2D" uid="uid://cn31bhr7cpqyc" path="res://assets/ui/in-game/titlescreen/Cat Lab Logo_F2.png" id="6_w77yj"]
+[ext_resource type="Texture2D" uid="uid://c7n5md7cy0fcj" path="res://assets/ui/in-game/titlescreen/Cat Lab Logo.png" id="7_rpvs4"]
+[ext_resource type="Texture2D" uid="uid://bwfvkkwav1r0k" path="res://assets/ui/in-game/titlescreen/Cat Lab Logo_F3.png" id="7_v7hj3"]
+[ext_resource type="Texture2D" uid="uid://blgub2iwj6ov0" path="res://assets/ui/in-game/titlescreen/Cat Lab Logo_F4.png" id="8_8or72"]
 
 [sub_resource type="Animation" id="Animation_w77yj"]
 length = 5.0
@@ -92,8 +92,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v6ms7"]
 _data = {
-&"RESET": SubResource("Animation_w77yj"),
-&"intro": SubResource("Animation_vhbaf")
+"RESET": SubResource("Animation_w77yj"),
+"intro": SubResource("Animation_vhbaf")
 }
 
 [node name="Titlescreen" type="Control"]
@@ -153,7 +153,7 @@ script = ExtResource("3_v6ms7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-&"": SubResource("AnimationLibrary_v6ms7")
+"": SubResource("AnimationLibrary_v6ms7")
 }
 
 [node name="Splash" type="TextureRect" parent="."]

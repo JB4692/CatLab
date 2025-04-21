@@ -100,14 +100,13 @@ func place_object(obj_array: Array) -> void:
 			"Litter":
 				place_litter_box(x_coord, y_coord, width, height)
 			"Special":
-				var distance = 100
 				place_moving_platform(x_coord, y_coord, width, height)
 			"Yarn":
-				place_enemy(x_coord, y_coord)
+				place_enemy(x_coord, y_coord, width, height)
 			"Coin":
 				place_coin(x_coord, y_coord)
-			"Squirrel":
-				place_squirrel(x_coord, y_coord)
+			"Spray":
+				place_sprayer(x_coord, y_coord)
 			_:
 				print("Could not match game object: ", obj_array[i][0])
 
@@ -189,28 +188,29 @@ func place_litter_box(x: int, y: int, width: int, height: int) -> void:
 	eol_object.scale = Vector2(width/32, height/32)
 	main_game.add_child(eol_object)
 	
-func place_enemy(x: int, y: int) -> void:
-	var enemy_scene = load("res://scenes/enemies/enemy1.tscn")
+func place_enemy(x: int, y: int, width: int, height: int) -> void:
+	var enemy_scene = load("res://scenes/enemies/dog.tscn")
 	var enemy = enemy_scene.instantiate()
-	enemy.position = Vector2i(x, y)
+	enemy.position = Vector2i(x - window_x/2, y - window_y/2)
+	enemy.scale = Vector2(20, 20)
 	enemy.name = "enemy" + str(num_enemies)
 	main_game.add_child(enemy)
 	num_enemies += 1
-	
+
 func place_coin(x: int, y: int) -> void:
 	var coin_scene = load("res://scenes/items/coin.tscn")
 	var coin = coin_scene.instantiate()
-	coin.position = Vector2i(x - 1152/2, y- 648/2)
+	coin.position = Vector2i(x - window_x/2, y - window_y/2)
 	coin.name = "coin" + str(num_coins)
 	coin.coin_collected.connect(_on_coin_collected)
 	main_game.get_node("Coins").add_child(coin)
 	num_coins += 1
 
-func place_squirrel(x: int, y: int):
-	var squirrel_scene = load("res://scenes/enemies/squirrel.tscn")
-	var sqrl = squirrel_scene.instantiate()
-	sqrl.position = Vector2i(x, y)
-	main_game.add_child(sqrl)
+func place_sprayer(x: int, y: int):
+	var sprayer_scene = load("res://scenes/enemies/sprayer.tscn")
+	var sprayer = sprayer_scene.instantiate()
+	sprayer.position = Vector2i(x - window_x/2, y - window_y/2)
+	main_game.add_child(sprayer)
 	
 	
 # OTHER HELPER FUNCTIONS =======================================================

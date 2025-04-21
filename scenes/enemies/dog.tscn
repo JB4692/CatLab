@@ -1,27 +1,30 @@
 [gd_scene load_steps=6 format=3 uid="uid://r1b83rtqvqia"]
 
-[ext_resource type="Script" uid="uid://dt2pue5uo5sx4" path="res://scripts/enemy1_behavior.gd" id="1_s5lyc"]
-[ext_resource type="Texture2D" uid="uid://b30v7geewj4cv" path="res://assets/sprites/Yarn.png" id="2_onn2y"]
+[ext_resource type="Script" path="res://scripts/enemy1_behavior.gd" id="1_ey1l0"]
+[ext_resource type="Texture2D" uid="uid://cke1aapu5debv" path="res://assets/sprites/dog.png" id="2_pvw5r"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_i2jjg"]
-radius = 13.0096
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tvxbj"]
+radius = 12.0
+height = 28.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wp5di"]
 size = Vector2(306, 96)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lof4c"]
-size = Vector2(32, 8)
+size = Vector2(32, 11)
 
 [node name="Enemy1" type="CharacterBody2D"]
 collision_layer = 4
-script = ExtResource("1_s5lyc")
+script = ExtResource("1_ey1l0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_onn2y")
+position = Vector2(-1, -8)
+scale = Vector2(1.5625, 1.65625)
+texture = ExtResource("2_pvw5r")
 
 [node name="Enemy CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1.5)
-shape = SubResource("CircleShape2D_i2jjg")
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_tvxbj")
 
 [node name="AttackTimer" type="Timer" parent="."]
 one_shot = true
@@ -31,7 +34,7 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="Area Detection CollisionShape2D" type="CollisionShape2D" parent="Area Detection"]
-position = Vector2(0, -30)
+position = Vector2(0, -32)
 shape = SubResource("RectangleShape2D_wp5di")
 
 [node name="Enemy1 Hitbox" type="Area2D" parent="."]
@@ -39,7 +42,7 @@ collision_layer = 64
 collision_mask = 2
 
 [node name="CollisionShape2D on Top" type="CollisionShape2D" parent="Enemy1 Hitbox"]
-position = Vector2(0, -14)
+position = Vector2(0, -17.5)
 shape = SubResource("RectangleShape2D_lof4c")
 debug_color = Color(0.506742, 0.425012, 1, 0.42)
 

@@ -1,12 +1,12 @@
 [gd_scene load_steps=30 format=3 uid="uid://dwvxqq2rjnsxo"]
 
-[ext_resource type="Script" uid="uid://fbux02q0ftic" path="res://scripts/ui/ingameui.gd" id="1_0ggt4"]
+[ext_resource type="Script" path="res://scripts/ui/ingameui.gd" id="1_0ggt4"]
 [ext_resource type="Texture2D" uid="uid://dbpsgekxw4m1h" path="res://assets/ui/in-game/Closed Asset Tab.png" id="1_vu37g"]
 [ext_resource type="Texture2D" uid="uid://r8tuopy2rfei" path="res://assets/ui/in-game/Home Button.png" id="2_0ggt4"]
 [ext_resource type="Texture2D" uid="uid://nfoklbhlwatk" path="res://assets/ui/in-game/create button.png" id="3_84r2i"]
 [ext_resource type="Texture2D" uid="uid://drrpxc4esl3wy" path="res://assets/ui/in-game/Opened Asset Tab.png" id="3_bcdu4"]
 [ext_resource type="Texture2D" uid="uid://vyj4p1fk2mxu" path="res://assets/ui/in-game/Tab Gradient.png" id="4_bcdu4"]
-[ext_resource type="Script" uid="uid://bcyito35yxdei" path="res://scripts/ui/button.gd" id="6_udu7f"]
+[ext_resource type="Script" path="res://scripts/ui/button.gd" id="6_udu7f"]
 [ext_resource type="Texture2D" uid="uid://dawv5j7itv5wb" path="res://assets/ui/in-game/Notification Pop-up.png" id="7_x5vbj"]
 [ext_resource type="Texture2D" uid="uid://b88t0ilsnp175" path="res://assets/ui/in-game/notification text/TAKING A PHOTO....png" id="8_j7bdu"]
 [ext_resource type="Texture2D" uid="uid://b7yltqphcj0ag" path="res://assets/ui/in-game/anims/pawprint trail/Pawprint Trail 1.png" id="9_75cmr"]
@@ -411,14 +411,14 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nj5yx"]
 _data = {
-&"RESET": SubResource("Animation_j6nbr"),
-&"fadegradient": SubResource("Animation_etwic"),
-&"fadegradientin": SubResource("Animation_xef4b"),
-&"pawtrail": SubResource("Animation_udu7f"),
-&"slide_up": SubResource("Animation_75cmr"),
-&"slidein": SubResource("Animation_gj7to"),
-&"tabin": SubResource("Animation_in8wn"),
-&"tabout": SubResource("Animation_nj5yx")
+"RESET": SubResource("Animation_j6nbr"),
+"fadegradient": SubResource("Animation_etwic"),
+"fadegradientin": SubResource("Animation_xef4b"),
+"pawtrail": SubResource("Animation_udu7f"),
+"slide_up": SubResource("Animation_75cmr"),
+"slidein": SubResource("Animation_gj7to"),
+"tabin": SubResource("Animation_in8wn"),
+"tabout": SubResource("Animation_nj5yx")
 }
 
 [node name="Ingameui" type="CanvasLayer"]
@@ -545,7 +545,7 @@ texture = ExtResource("8_j7bdu")
 
 [node name="MenuAnimator" type="AnimationPlayer" parent="UI"]
 libraries = {
-&"": SubResource("AnimationLibrary_nj5yx")
+"": SubResource("AnimationLibrary_nj5yx")
 }
 
 [node name="PhotoLoadAnim" type="TextureProgressBar" parent="UI"]
