@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cu2wdn0httpg2"]
+[gd_scene load_steps=16 format=4 uid="uid://cu2wdn0httpg2"]
 
 [ext_resource type="Script" uid="uid://cmsrhqkk12l71" path="res://scripts/main_game.gd" id="1_j2p5a"]
 [ext_resource type="PackedScene" uid="uid://fskuxnds6xnw" path="res://scenes/heart_container.tscn" id="2_xm0e5"]
@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://c4rd71iroeb4g" path="res://assets/tilesets/world_tileset.png" id="4_dxpqb"]
 [ext_resource type="Texture2D" uid="uid://fpf5d13u0i5y" path="res://assets/tilesets/Dirt Grass and brick tileset.png" id="4_v4t08"]
 [ext_resource type="PackedScene" uid="uid://dwvxqq2rjnsxo" path="res://scenes/ingameui.tscn" id="5_ipu61"]
-[ext_resource type="Script" uid="uid://b1nw12q7gdlab" path="res://scenes/killzone.gd" id="7_sris1"]
+[ext_resource type="PackedScene" uid="uid://b7v248yw24j2a" path="res://scenes/enemies/sprayer.tscn" id="7_p2k8d"]
+[ext_resource type="Script" path="res://scripts/killzone.gd" id="7_sris1"]
+[ext_resource type="PackedScene" uid="uid://c5ypybcr7k3mr" path="res://scenes/static_platform_l.tscn" id="9_nn57j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sq400"]
 texture = ExtResource("4_v4t08")
@@ -173,7 +175,7 @@ script = ExtResource("1_j2p5a")
 [node name="Heart Container" parent="CanvasLayer" instance=ExtResource("2_xm0e5")]
 
 [node name="Player" parent="." instance=ExtResource("3_mrcbi")]
-position = Vector2(-637, 0)
+position = Vector2(-535, 13)
 collision_layer = 255
 collision_mask = 255
 
@@ -190,7 +192,7 @@ tile_map_data = PackedByteArray("AAD//wAAAAAAAAsAAAD+/wAAAAAAAAsAAAD9/wAAAAAAAAs
 tile_set = SubResource("TileSet_hxk61")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 15.0
+wait_time = 30.0
 one_shot = true
 autostart = true
 
@@ -229,6 +231,9 @@ collision_mask = 2
 position = Vector2(297, -7)
 shape = SubResource("RectangleShape2D_b0ynr")
 
+[node name="sprayer" parent="." instance=ExtResource("7_p2k8d")]
+position = Vector2(0, -175)
+
 [node name="Killzone" type="Area2D" parent="."]
 collision_layer = 3
 collision_mask = 3
@@ -237,6 +242,21 @@ script = ExtResource("7_sris1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 position = Vector2(0, 344)
 shape = SubResource("RectangleShape2D_g41mg")
+
+[node name="Static Platform Large" parent="." instance=ExtResource("9_nn57j")]
+position = Vector2(-490, 52)
+
+[node name="Static Platform Large2" parent="." instance=ExtResource("9_nn57j")]
+position = Vector2(-329, 50)
+
+[node name="Static Platform Large3" parent="." instance=ExtResource("9_nn57j")]
+position = Vector2(-170, 9)
+
+[node name="Static Platform Large4" parent="." instance=ExtResource("9_nn57j")]
+position = Vector2(-12, -22)
+
+[node name="Static Platform Large5" parent="." instance=ExtResource("9_nn57j")]
+position = Vector2(-15, 202)
 
 [connection signal="timeout" from="Timer" to="." method="_on_countdown_timer_timeout"]
 [connection signal="body_entered" from="Killzone" to="." method="_on_killzone_body_entered"]

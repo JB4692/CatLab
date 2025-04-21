@@ -4,12 +4,12 @@
 [ext_resource type="Script" uid="uid://bk7afdtgjx05v" path="res://scripts/canvas_layer.gd" id="2_olgih"]
 [ext_resource type="PackedScene" uid="uid://fskuxnds6xnw" path="res://scenes/heart_container.tscn" id="3_xptd1"]
 [ext_resource type="Texture2D" uid="uid://fpf5d13u0i5y" path="res://assets/tilesets/Dirt Grass and brick tileset.png" id="4_nung1"]
-[ext_resource type="PackedScene" uid="uid://2tfqgv8xq70s" path="res://scenes/climbable_wall.tscn" id="5_dbfcm"]
+[ext_resource type="PackedScene" uid="uid://2tfqgv8xq70s" path="res://scenes/blocks/tower.tscn" id="5_dbfcm"]
 [ext_resource type="PackedScene" uid="uid://cgdus1dn4qbq" path="res://scenes/static_platform_m.tscn" id="6_jiwpl"]
 [ext_resource type="PackedScene" uid="uid://c5ypybcr7k3mr" path="res://scenes/static_platform_l.tscn" id="7_isugi"]
 [ext_resource type="PackedScene" uid="uid://bk3qlfir1vuvf" path="res://scenes/player.tscn" id="8_yu45l"]
-[ext_resource type="PackedScene" uid="uid://r1b83rtqvqia" path="res://scenes/enemy1.tscn" id="9_nchb2"]
-[ext_resource type="PackedScene" uid="uid://cxiwyn6x0t1o7" path="res://scenes/level_endpoint.tscn" id="10_u5vkm"]
+[ext_resource type="PackedScene" uid="uid://r1b83rtqvqia" path="res://scenes/enemies/enemy1.tscn" id="9_nchb2"]
+[ext_resource type="PackedScene" uid="uid://cxiwyn6x0t1o7" path="res://scenes/blocks/level_endpoint.tscn" id="10_u5vkm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r40y0"]
 texture = ExtResource("4_nung1")
@@ -91,7 +91,12 @@ position = Vector2(128, 181)
 [node name="Enemy2" parent="." instance=ExtResource("9_nchb2")]
 position = Vector2(480, 186)
 
+[node name="tower" parent="." instance=ExtResource("5_dbfcm")]
+position = Vector2(-54, 262)
+
 [node name="Level Endpoint" parent="." instance=ExtResource("10_u5vkm")]
 position = Vector2(537, 254)
+
+[node name="Coins" type="Node2D" parent="."]
 
 [connection signal="body_shape_entered" from="Revive trigger" to="." method="_on_revive_trigger_body_shape_entered"]

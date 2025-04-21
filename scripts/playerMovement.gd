@@ -30,6 +30,7 @@ func _physics_process(delta: float) -> void:
 func revive(): # put player back in start_position
 	if dead: 
 		position = start_position
+		#position = Vector2(-33, 2) # delete this and put back above line
 		dead = false
 		health = 3; 
 		playerRevived.emit(health)
@@ -96,7 +97,7 @@ func _wall_climb(delta):
 
 func _on_player_hitbox_area_entered(area: Area2D) -> void:
 	if area.name.contains("acorn"):
-		print("Hit by acorn.")
+		# print("Hit by acorn.")
 		healthUpdate(1)
 
 func healthUpdate(amount: int):

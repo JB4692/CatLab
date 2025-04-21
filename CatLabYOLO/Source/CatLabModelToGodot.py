@@ -3,35 +3,12 @@ import cv2
 import asyncio
 import websockets
 import base64
-import numpy as np
 from roboflow import Roboflow
-import time
 import csv
+import json
+import os
 
-def draw_predictions(image, predictions):
-    output_img = image.copy()
-    
-    for pred in predictions['predictions']:
-        # Get bounding box coordinates and class information
-        x = int(pred['x'])
-        y = int(pred['y'])
-        width = int(pred['width'])
-        height = int(pred['height'])
-        label = pred['class']
-        confidence = pred['confidence']
-        
-        # Calculate top-left and bottom-right points
-        x1 = int(x - width/2)
-        y1 = int(y - height/2)
-        x2 = int(x + width/2)
-        y2 = int(y + height/2)
-        
-        # Draw rectangle and label on the image
-        cv2.rectangle(output_img, (x1, y1), (x2, y2), (0, 255, 0), 2)
-        text = f"{label}: {confidence:.2f}"
-        cv2.putText(output_img, text, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
-    
-    return output_img
+
 
 # YOLO Model Paths
 CFG_PATH = "yolov4.cfg"
@@ -63,54 +40,56 @@ with open(NAMES_PATH, "r") as f:
 layer_names = net.getLayerNames()
 output_layers = [layer_names[i - 1] for i in net.getUnconnectedOutLayers().flatten()]
 
+def draw_predictions(image, predictions):
+    output_img = image.copy()
+    
+    for pred in predictions['predictions']:
+        # Get bounding box coordinates and class information
+        x = int(pred['x'])
+        y = int(pred['y'])
+        width = int(pred['width'])
+        height = int(pred['height'])
+        label = pred['class']
+        confidence = pred['confidence']
+        
+        # Calculate top-left and bottom-right points
+        x1 = int(x - width/2)
+        y1 = int(y - height/2)
+        x2 = int(x + width/2)
+        y2 = int(y + height/2)
+        
+        # Draw rectangle and label on the image
+        cv2.rectangle(output_img, (x1, y1), (x2, y2), (0, 255, 0), 2)
+        text = f"{label}: {confidence:.2f}"
+        cv2.putText(output_img, text, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+    
+    return output_img
+
+
+def save_to_csv(image_objects):
+    script_path = os.path.dirname(__file__)
+    full_path = os.path.join(script_path, 'saves/current_objects.csv')
+    with open(full_path, mode="w", newline="") as file:
+        writer = csv.writer(file)
+        for obj in image_objects:
+            writer.writerow([obj["label"], obj["x"], obj["y"], obj["width"], obj["height"]])
+    print("Current frame saved to 'Source/saves/current_objects.csv'.")
 
 async def send_video(websocket, path=None):
     
     rf = Roboflow(api_key="")
     project = rf.workspace().project("catlab-level-recognition-model")
     model = project.version(4).model
+    last_response = None
 
     cap = cv2.VideoCapture(0)  # Open webcam
     if not cap.isOpened():
         print("Error: Unable to access the webcam.")
         return
-    print("Starting video capture. Press 's' to save the current detections. Press 'q' to exit.")
+    print("Starting video capture. Press 'ENTER' to save the current detections.")
 
     try:
         while True:
-            # ret, frame = cap.read()
-            # if not ret:
-            #     print("Error: Failed to capture frame.")
-            #     break
-
-            # height, width, channels = frame.shape
-
-            # # Run YOLO Object Detection
-            # blob = cv2.dnn.blobFromImage(frame, 1/255.0, (416, 416), swapRB=True, crop=False)
-            # net.setInput(blob)
-            # detections = net.forward(output_layers)
-
-            # # Process Detections
-            # for output in detections:
-            #     for detection in output:
-            #         scores = detection[5:]
-            #         class_id = np.argmax(scores)
-            #         confidence = scores[class_id]
-
-            #         if confidence > 0.5:  # Confidence threshold
-            #             # Object detected
-            #             center_x = int(detection[0] * width)
-            #             center_y = int(detection[1] * height)
-
-            #             # Draw detection
-            #             cv2.circle(frame, (center_x, center_y), 5, (0, 255, 0), -1)
-            #             cv2.putText(frame, f"{classes[class_id]} ({center_x}, {center_y})",
-            #                         (center_x - 10, center_y - 10), cv2.FONT_HERSHEY_SIMPLEX,
-            #                         0.5, (255, 0, 0), 2)
-
-            # # Resize the frame before sending (reduces data size)
-            # frame = cv2.resize(frame, (1152, 648))
-
             # # Encode the image
             ret, frame = cap.read()
             if not ret:
@@ -138,29 +117,44 @@ async def send_video(websocket, path=None):
             output_frame = draw_predictions(frame, predictions)
 
             # Display the frame (If GUI is supported)
-            cv2.imshow('Object Detection', output_frame)
+            # cv2.imshow('Object Detection', output_frame)
 
-            # User input handling
-            key = cv2.waitKey(1) & 0xFF
+            # # User input handling
+            # key = cv2.waitKey(1) & 0xFF
 
-            if key == ord('s'):
-                with open("current_objects.csv", mode="w", newline="") as file:
-                    writer = csv.writer(file)
-                    for obj in frame_objects:
-                        writer.writerow([obj["label"], obj["x"], obj["y"], obj["width"], obj["height"]])
-                print("Current frame saved to 'current_objects.csv'.")
-
-            if key == ord('q'):
-                break
+            # if key == ord('s'):
+            #     save_to_csv(frame_objects)
+            # if key == ord('q'):
+            #     break
 
             # time.sleep(0.1)
             _, buffer = cv2.imencode('.jpg', output_frame, [cv2.IMWRITE_JPEG_QUALITY, 50])
             encoded_frame = base64.b64encode(buffer).decode("utf-8")
-
+            
+            
             # Send frame to WebSocket client (Godot)
+            await websocket.send(encoded_frame)
+            # print(f"Sent frame: {len(encoded_frame)} bytes")
             try:
-                await websocket.send(encoded_frame)
-                print(f"Sent frame: {len(encoded_frame)} bytes")
+                response = await asyncio.wait_for(websocket.recv(), timeout=0.01)
+                if isinstance(response, bytes):
+                    response = response.decode('utf-8')
+                
+
+                if last_response != response:
+                    print(f"Received response from Godot: {response}")
+                    print(f"Received as last_response: {last_response}")
+                    if response == 'SAVE':
+                        save_to_csv(frame_objects)
+                        last_response = None
+                    elif response == 'QUIT':
+                        print(f"Received {response}. Ending image transmission.")
+                        break
+
+                    last_response = response
+
+            except asyncio.TimeoutError:
+                pass
             except websockets.exceptions.ConnectionClosed as e:
                 print(f"Connection closed: {e}")
                 break

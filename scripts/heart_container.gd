@@ -12,9 +12,15 @@ func _process(delta: float) -> void:
 	pass
 
 func setMaxHearts(max: int):
-	for i in range(max): 
+	# Make sure heart_container has no children		
+	if get_children().size() != 0:
+		for i in get_children().size():
+			reduceHeart() 
+	
+	for i in range(3): # replaced range(max) with 3
 		var h = heart.instantiate()
 		add_child(h)
+
 
 func reduceHeart():
 	if(get_children().size() > 0):
