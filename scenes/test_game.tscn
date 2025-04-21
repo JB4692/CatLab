@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://bgpwbado7qw54"]
 
-[ext_resource type="Script" path="res://scripts/main_game.gd" id="1_ybhyk"]
-[ext_resource type="Script" path="res://scripts/canvas_layer.gd" id="2_olgih"]
+[ext_resource type="Script" uid="uid://cmsrhqkk12l71" path="res://scripts/main_game.gd" id="1_ybhyk"]
+[ext_resource type="Script" uid="uid://bk7afdtgjx05v" path="res://scripts/canvas_layer.gd" id="2_olgih"]
 [ext_resource type="PackedScene" uid="uid://fskuxnds6xnw" path="res://scenes/heart_container.tscn" id="3_xptd1"]
 [ext_resource type="Texture2D" uid="uid://fpf5d13u0i5y" path="res://assets/tilesets/Dirt Grass and brick tileset.png" id="4_nung1"]
 [ext_resource type="PackedScene" uid="uid://2tfqgv8xq70s" path="res://scenes/blocks/tower.tscn" id="5_dbfcm"]

@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://bp7lt18vh3vp7"]
+
+[ext_resource type="Texture2D" uid="uid://cvde6kad60mx7" path="res://assets/ui/in-game/titlescreen/circle.png" id="1_pal1d"]
+[ext_resource type="Texture2D" uid="uid://dwyosv8wurbmg" path="res://assets/ui/in-game/titlescreen/circlew.png" id="1_xq8ll"]
+[ext_resource type="Script" uid="uid://dyqvaguba7pqf" path="res://scripts/ui/circle.gd" id="2_xq8ll"]
+
+[node name="circles" type="Node2D"]
+
+[node name="circle" type="Sprite2D" parent="."]
+texture = ExtResource("1_xq8ll")
+script = ExtResource("2_xq8ll")
+
+[node name="circle2" type="Sprite2D" parent="."]
+position = Vector2(1147, 575)
+texture = ExtResource("1_xq8ll")
+script = ExtResource("2_xq8ll")
+
+[node name="circle3" type="Sprite2D" parent="."]
+position = Vector2(138, 607)
+texture = ExtResource("1_pal1d")
+script = ExtResource("2_xq8ll")
+
+[node name="circle4" type="Sprite2D" parent="."]
+position = Vector2(28, 422)
+texture = ExtResource("1_xq8ll")
+script = ExtResource("2_xq8ll")
+
+[node name="circle5" type="Sprite2D" parent="."]
+texture = ExtResource("1_pal1d")
+script = ExtResource("2_xq8ll")
+
+[node name="circle6" type="Sprite2D" parent="."]
+position = Vector2(1260, 214)
+texture = ExtResource("1_pal1d")
+script = ExtResource("2_xq8ll")

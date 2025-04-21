@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="Cat Lab"
-run/main_scene="res://scenes/main_game.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+run/main_scene="uid://clcke2cxq1jip"
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
